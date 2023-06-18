@@ -41,6 +41,8 @@ class RegistrationController extends AbstractController
                 )
             );
 
+            $user ->setCreatedAt(new \DateTimeImmutable());                         //cham created_at avant la sauvegarde en base de données du nouvel User
+
             $entityManager->persist($user);
             $entityManager->flush();
 
@@ -79,6 +81,6 @@ class RegistrationController extends AbstractController
         // @TODO Change the redirect on success and handle or remove the flash message in your templates
         $this->addFlash('success', 'Your email address has been verified.');
 
-        return $this->redirectToRoute('app_register');
+        return $this->redirectToRoute('app_home');                          //redirection page home après s'être enregistré
     }
 }

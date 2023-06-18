@@ -12,12 +12,15 @@
     {{ form_errors(registrationForm) }}
 
     {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+        {{ form_widget(registrationForm.roles) }}
+        {{ form_widget(registrationForm.name) }}
+        {{ form_widget(registrationForm.firstname) }}
+        {{ form_widget(registrationForm.company) }}
+        {{ form_widget(registrationForm.email) }}
+        {{ form_widget(registrationForm.phone) }}
+        {{ form_widget(registrationForm.plainPassword) }}
+        {{ form_widget(registrationForm.agreeTerms) }}
 
-        <button type="submit" class="btn">Register</button>
+        <button type="submit" class="btn">Enregistrez-vous !</button>
     {{ form_end(registrationForm) }}
 {% endblock %}
