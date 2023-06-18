@@ -20,7 +20,8 @@
         {{ form_widget(registrationForm.phone) }}
         {{ form_widget(registrationForm.plainPassword) }}
         {{ form_widget(registrationForm.agreeTerms) }}
+        {{ form_label(registrationForm.agreeTerms) }}
 
-        <button type="submit" class="btn">Enregistrez-vous !</button>
+        <button type="submit" class="btn btn-primary">Enregistrez-vous !</button>
     {{ form_end(registrationForm) }}
 {% endblock %}
