@@ -41,7 +41,7 @@ class RegistrationController extends AbstractController
                 )
             );
 
-            $user ->setCreatedAt(new \DateTimeImmutable());                         //cham created_at avant la sauvegarde en base de données du nouvel User
+            $user ->setCreatedAt(new \DateTimeImmutable());                         //champ rempli created_at avant la sauvegarde en base de données du nouvel User
 
             $entityManager->persist($user);
             $entityManager->flush();
