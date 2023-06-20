@@ -58,7 +58,7 @@ class AdminUserController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_admin_user_edit', methods: ['GET', 'POST'])]
+    #[Route('/edit/{id}', name: 'app_admin_user_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, User $user, UserRepository $userRepository,UserPasswordHasherInterface $userPasswordHasher ): Response
     {
         $form = $this->createForm(UserType::class, $user);
