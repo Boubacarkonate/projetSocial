@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -51,7 +53,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'boolean')]
     private $isVerified = false;
 
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: AnnonceEmploi::class, orphanRemoval: true)]
+    private Collection $annoncesEmplois_id;
 
+    public function __construct()
+    {
+        $this->annoncesEmplois_id = new ArrayCollection();
+    }
+
+    
     public function getId(): ?int
     {
         return $this->id;
@@ -205,5 +215,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+    /**
+     * @return Collection<int, AnnonceEmploi>
+     */
+    public function getAnnoncesEmploisId(): Collection
+    {
+        return $this->annoncesEmplois_id;
+    }
+
+    public function addAnnoncesEmploisId(AnnonceEmploi $annoncesEmploisId): static
+    {
+        if (!$this->annoncesEmplois_id->contains($annoncesEmploisId)) {
+            $this->annoncesEmplois_id->add($annoncesEmploisId);
+            $annoncesEmploisId->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAnnoncesEmploisId(AnnonceEmploi $annoncesEmploisId): static
+    {
+        if ($this->annoncesEmplois_id->removeElement($annoncesEmploisId)) {
+            // set the owning side to null (unless already changed)
+            if ($annoncesEmploisId->getUser() === $this) {
+                $annoncesEmploisId->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
 
 }
