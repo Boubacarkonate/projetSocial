@@ -56,9 +56,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: AnnonceEmploi::class, orphanRemoval: true)]
     private Collection $annoncesEmplois_id;
 
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Commandes::class, orphanRemoval: true)]
+    private Collection $commandes;
+
     public function __construct()
     {
         $this->annoncesEmplois_id = new ArrayCollection();
+        $this->commandes = new ArrayCollection();
     }
 
     
@@ -240,6 +244,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($annoncesEmploisId->getUser() === $this) {
                 $annoncesEmploisId->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Commandes>
+     */
+    public function getCommandes(): Collection
+    {
+        return $this->commandes;
+    }
+
+    public function addCommande(Commandes $commande): static
+    {
+        if (!$this->commandes->contains($commande)) {
+            $this->commandes->add($commande);
+            $commande->setUserId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommande(Commandes $commande): static
+    {
+        if ($this->commandes->removeElement($commande)) {
+            // set the owning side to null (unless already changed)
+            if ($commande->getUserId() === $this) {
+                $commande->setUserId(null);
             }
         }
 
