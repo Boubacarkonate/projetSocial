@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Form;
+namespace App\Form\AdminForm;
 
 use App\Entity\Forfait;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ForfaitType extends AbstractType
+class AdminForfaitType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {

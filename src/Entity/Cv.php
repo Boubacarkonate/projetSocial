@@ -30,6 +30,9 @@ class Cv
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $cv_candidat = null;
+
    
     public function getId(): ?int
     {
@@ -92,6 +95,18 @@ class Cv
     public function setUser(User $user): static
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getCvCandidat(): ?string
+    {
+        return $this->cv_candidat;
+    }
+
+    public function setCvCandidat(string $cv_candidat): static
+    {
+        $this->cv_candidat = $cv_candidat;
 
         return $this;
     }

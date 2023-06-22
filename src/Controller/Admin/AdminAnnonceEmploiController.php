@@ -3,7 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\AnnonceEmploi;
-use App\Form\AdminAnnonceEmploiType;
+use App\Form\AdminForm\AdminAnnonceEmploiType;
 use App\Repository\AnnonceEmploiRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,7 +16,7 @@ class AdminAnnonceEmploiController extends AbstractController
     #[Route('/', name: 'app_admin_annonce_emploi_index', methods: ['GET'])]
     public function index(AnnonceEmploiRepository $annonceEmploiRepository): Response
     {
-        return $this->render('admin_annonce_emploi/index.html.twig', [
+        return $this->render('admin/admin_annonce_emploi/index.html.twig', [
             'annonce_emplois' => $annonceEmploiRepository->findAll(),
         ]);
     }
@@ -35,7 +35,7 @@ class AdminAnnonceEmploiController extends AbstractController
             return $this->redirectToRoute('app_admin_annonce_emploi_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('admin_annonce_emploi/new.html.twig', [
+        return $this->renderForm('admin/admin_annonce_emploi/new.html.twig', [
             'annonce_emploi' => $annonceEmploi,
             'form' => $form,
         ]);
@@ -44,12 +44,12 @@ class AdminAnnonceEmploiController extends AbstractController
     #[Route('/{id}', name: 'app_admin_annonce_emploi_show', methods: ['GET'])]
     public function show(AnnonceEmploi $annonceEmploi): Response
     {
-        return $this->render('admin_annonce_emploi/show.html.twig', [
+        return $this->render('admin/admin_annonce_emploi/show.html.twig', [
             'annonce_emploi' => $annonceEmploi,
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_admin_annonce_emploi_edit', methods: ['GET', 'POST'])]
+    #[Route('/edit/{id}', name: 'app_admin_annonce_emploi_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, AnnonceEmploi $annonceEmploi, AnnonceEmploiRepository $annonceEmploiRepository): Response
     {
         $form = $this->createForm(AdminAnnonceEmploiType::class, $annonceEmploi);
@@ -61,7 +61,7 @@ class AdminAnnonceEmploiController extends AbstractController
             return $this->redirectToRoute('app_admin_annonce_emploi_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('admin_annonce_emploi/edit.html.twig', [
+        return $this->renderForm('admin/admin_annonce_emploi/edit.html.twig', [
             'annonce_emploi' => $annonceEmploi,
             'form' => $form,
         ]);
