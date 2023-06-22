@@ -26,6 +26,7 @@
                 <td>{{ forfait.description }}</td>
                 <td>
                     <a href="{{ path('app_forfait_show', {'id': forfait.id}) }}">show</a>
+                    <a href="{{ path('app_cart_add', {id: forfait.id}) }} "class="btn btn-primary">VALIDER le panier</a>
                 </td>
             </tr>
         {% else %}
