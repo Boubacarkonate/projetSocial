@@ -53,7 +53,26 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'boolean')]
     private $isVerified = false;
 
-    
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: AnnonceEmploi::class, orphanRemoval: true)]
+    private Collection $annonceEmplois;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Commandes::class, orphanRemoval: true)]
+    private Collection $commandes;
+
+    #[ORM\OneToOne(mappedBy: 'user', cascade: ['persist', 'remove'])]
+    private ?Cv $cv = null;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Facture::class, orphanRemoval: true)]
+    private Collection $factures;
+
+    public function __construct()
+    {
+        $this->annonceEmplois = new ArrayCollection();
+        $this->commandes = new ArrayCollection();
+        $this->factures = new ArrayCollection();
+    }
+
+   
     public function getId(): ?int
     {
         return $this->id;
@@ -204,6 +223,113 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setIsVerified(bool $isVerified): static
     {
         $this->isVerified = $isVerified;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, AnnonceEmploi>
+     */
+    public function getAnnonceEmplois(): Collection
+    {
+        return $this->annonceEmplois;
+    }
+
+    public function addAnnonceEmploi(AnnonceEmploi $annonceEmploi): static
+    {
+        if (!$this->annonceEmplois->contains($annonceEmploi)) {
+            $this->annonceEmplois->add($annonceEmploi);
+            $annonceEmploi->setUserId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAnnonceEmploi(AnnonceEmploi $annonceEmploi): static
+    {
+        if ($this->annonceEmplois->removeElement($annonceEmploi)) {
+            // set the owning side to null (unless already changed)
+            if ($annonceEmploi->getUserId() === $this) {
+                $annonceEmploi->setUserId(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Commandes>
+     */
+    public function getCommandes(): Collection
+    {
+        return $this->commandes;
+    }
+
+    public function addCommande(Commandes $commande): static
+    {
+        if (!$this->commandes->contains($commande)) {
+            $this->commandes->add($commande);
+            $commande->setUserId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommande(Commandes $commande): static
+    {
+        if ($this->commandes->removeElement($commande)) {
+            // set the owning side to null (unless already changed)
+            if ($commande->getUserId() === $this) {
+                $commande->setUserId(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getCv(): ?Cv
+    {
+        return $this->cv;
+    }
+
+    public function setCv(Cv $cv): static
+    {
+        // set the owning side of the relation if necessary
+        if ($cv->getUserId() !== $this) {
+            $cv->setUserId($this);
+        }
+
+        $this->cv = $cv;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Facture>
+     */
+    public function getFactures(): Collection
+    {
+        return $this->factures;
+    }
+
+    public function addFacture(Facture $facture): static
+    {
+        if (!$this->factures->contains($facture)) {
+            $this->factures->add($facture);
+            $facture->setUserId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFacture(Facture $facture): static
+    {
+        if ($this->factures->removeElement($facture)) {
+            // set the owning side to null (unless already changed)
+            if ($facture->getUserId() === $this) {
+                $facture->setUserId(null);
+            }
+        }
 
         return $this;
     }

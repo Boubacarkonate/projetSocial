@@ -18,6 +18,19 @@ class Categorie
     #[ORM\Column(length: 255)]
     private ?string $sector = null;
 
+    #[ORM\OneToMany(mappedBy: 'categorie', targetEntity: AnnonceEmploi::class)]
+    private Collection $annonceEmplois;
+
+    #[ORM\OneToMany(mappedBy: 'categorie', targetEntity: Cv::class)]
+    private Collection $cvs;
+
+    public function __construct()
+    {
+        $this->annonceEmplois = new ArrayCollection();
+        $this->cvs = new ArrayCollection();
+    }
+
+   
 
     public function getId(): ?int
     {
@@ -32,6 +45,66 @@ class Categorie
     public function setSector(string $sector): static
     {
         $this->sector = $sector;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, AnnonceEmploi>
+     */
+    public function getAnnonceEmplois(): Collection
+    {
+        return $this->annonceEmplois;
+    }
+
+    public function addAnnonceEmploi(AnnonceEmploi $annonceEmploi): static
+    {
+        if (!$this->annonceEmplois->contains($annonceEmploi)) {
+            $this->annonceEmplois->add($annonceEmploi);
+            $annonceEmploi->setCategorieId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAnnonceEmploi(AnnonceEmploi $annonceEmploi): static
+    {
+        if ($this->annonceEmplois->removeElement($annonceEmploi)) {
+            // set the owning side to null (unless already changed)
+            if ($annonceEmploi->getCategorieId() === $this) {
+                $annonceEmploi->setCategorieId(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Cv>
+     */
+    public function getCvs(): Collection
+    {
+        return $this->cvs;
+    }
+
+    public function addCv(Cv $cv): static
+    {
+        if (!$this->cvs->contains($cv)) {
+            $this->cvs->add($cv);
+            $cv->setCategorieId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCv(Cv $cv): static
+    {
+        if ($this->cvs->removeElement($cv)) {
+            // set the owning side to null (unless already changed)
+            if ($cv->getCategorieId() === $this) {
+                $cv->setCategorieId(null);
+            }
+        }
 
         return $this;
     }

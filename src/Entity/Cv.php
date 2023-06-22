@@ -22,6 +22,15 @@ class Cv
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $updated_at = null;
 
+    #[ORM\ManyToOne(inversedBy: 'cvs')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Categorie $categorie = null;
+
+    #[ORM\OneToOne(inversedBy: 'cv', cascade: ['persist', 'remove'])]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $user = null;
+
+   
     public function getId(): ?int
     {
         return $this->id;
@@ -59,6 +68,30 @@ class Cv
     public function setUpdatedAt(?\DateTimeImmutable $updated_at): static
     {
         $this->updated_at = $updated_at;
+
+        return $this;
+    }
+
+    public function getCategorieId(): ?Categorie
+    {
+        return $this->categorie;
+    }
+
+    public function setCategorieId(?Categorie $categorie): static
+    {
+        $this->categorie = $categorie;
+
+        return $this;
+    }
+
+    public function getUserId(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUserId(User $user): static
+    {
+        $this->user = $user;
 
         return $this;
     }

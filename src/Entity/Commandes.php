@@ -22,6 +22,18 @@ class Commandes
     #[ORM\Column]
     private ?int $quantity = null;
 
+    #[ORM\ManyToOne(inversedBy: 'commandes')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Forfait $forfait = null;
+
+    #[ORM\ManyToOne(inversedBy: 'commandes')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Facture $facture = null;
+
+    #[ORM\ManyToOne(inversedBy: 'commandes')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $user = null;
+
 
     public function getId(): ?int
     {
@@ -64,5 +76,41 @@ class Commandes
         return $this;
     }
 
-  
+    public function getForfaitId(): ?Forfait
+    {
+        return $this->forfait;
+    }
+
+    public function setForfaitId(?Forfait $forfait): static
+    {
+        $this->forfait = $forfait;
+
+        return $this;
+    }
+
+    public function getFactureId(): ?Facture
+    {
+        return $this->facture;
+    }
+
+    public function setFactureId(?Facture $facture): static
+    {
+        $this->facture = $facture;
+
+        return $this;
+    }
+
+    public function getUserId(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUserId(?User $user): static
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+
 }

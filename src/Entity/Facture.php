@@ -18,6 +18,20 @@ class Facture
     #[ORM\Column]
     private ?\DateTimeImmutable $created_at = null;
 
+    #[ORM\OneToMany(mappedBy: 'facture', targetEntity: Commandes::class, orphanRemoval: true)]
+    private Collection $commandes;
+
+    #[ORM\ManyToOne(inversedBy: 'factures')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $user = null;
+
+    public function __construct()
+    {
+        $this->commandes = new ArrayCollection();
+    }
+
+  
+
    
     public function getId(): ?int
     {
@@ -36,4 +50,47 @@ class Facture
         return $this;
     }
 
+    /**
+     * @return Collection<int, Commandes>
+     */
+    public function getCommandes(): Collection
+    {
+        return $this->commandes;
+    }
+
+    public function addCommande(Commandes $commande): static
+    {
+        if (!$this->commandes->contains($commande)) {
+            $this->commandes->add($commande);
+            $commande->setFactureId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommande(Commandes $commande): static
+    {
+        if ($this->commandes->removeElement($commande)) {
+            // set the owning side to null (unless already changed)
+            if ($commande->getFactureId() === $this) {
+                $commande->setFactureId(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getUserId(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUserId(?User $user): static
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+   
 }
