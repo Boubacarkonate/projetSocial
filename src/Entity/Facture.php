@@ -62,7 +62,7 @@ class Facture
     {
         if (!$this->commandes->contains($commande)) {
             $this->commandes->add($commande);
-            $commande->setFactureId($this);
+            $commande->setFacture($this);
         }
 
         return $this;
@@ -72,20 +72,20 @@ class Facture
     {
         if ($this->commandes->removeElement($commande)) {
             // set the owning side to null (unless already changed)
-            if ($commande->getFactureId() === $this) {
-                $commande->setFactureId(null);
+            if ($commande->getFacture() === $this) {
+                $commande->setFacture(null);
             }
         }
 
         return $this;
     }
 
-    public function getUserId(): ?User
+    public function getUser(): ?User
     {
         return $this->user;
     }
 
-    public function setUserId(?User $user): static
+    public function setUser(?User $user): static
     {
         $this->user = $user;
 

@@ -61,7 +61,7 @@ class Categorie
     {
         if (!$this->annonceEmplois->contains($annonceEmploi)) {
             $this->annonceEmplois->add($annonceEmploi);
-            $annonceEmploi->setCategorieId($this);
+            $annonceEmploi->setCategorie($this);
         }
 
         return $this;
@@ -71,8 +71,8 @@ class Categorie
     {
         if ($this->annonceEmplois->removeElement($annonceEmploi)) {
             // set the owning side to null (unless already changed)
-            if ($annonceEmploi->getCategorieId() === $this) {
-                $annonceEmploi->setCategorieId(null);
+            if ($annonceEmploi->getCategorie() === $this) {
+                $annonceEmploi->setCategorie(null);
             }
         }
 
@@ -91,7 +91,7 @@ class Categorie
     {
         if (!$this->cvs->contains($cv)) {
             $this->cvs->add($cv);
-            $cv->setCategorieId($this);
+            $cv->setCategorie($this);
         }
 
         return $this;
@@ -101,12 +101,17 @@ class Categorie
     {
         if ($this->cvs->removeElement($cv)) {
             // set the owning side to null (unless already changed)
-            if ($cv->getCategorieId() === $this) {
-                $cv->setCategorieId(null);
+            if ($cv->getCategorie() === $this) {
+                $cv->setCategorie(null);
             }
         }
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->sector;            //méthode magique => convertisseur en string
     }
 
 

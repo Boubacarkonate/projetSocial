@@ -239,7 +239,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if (!$this->annonceEmplois->contains($annonceEmploi)) {
             $this->annonceEmplois->add($annonceEmploi);
-            $annonceEmploi->setUserId($this);
+            $annonceEmploi->setUser($this);
         }
 
         return $this;
@@ -249,8 +249,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if ($this->annonceEmplois->removeElement($annonceEmploi)) {
             // set the owning side to null (unless already changed)
-            if ($annonceEmploi->getUserId() === $this) {
-                $annonceEmploi->setUserId(null);
+            if ($annonceEmploi->getUser() === $this) {
+                $annonceEmploi->setUser(null);
             }
         }
 
@@ -269,7 +269,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if (!$this->commandes->contains($commande)) {
             $this->commandes->add($commande);
-            $commande->setUserId($this);
+            $commande->setUser($this);
         }
 
         return $this;
@@ -279,8 +279,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if ($this->commandes->removeElement($commande)) {
             // set the owning side to null (unless already changed)
-            if ($commande->getUserId() === $this) {
-                $commande->setUserId(null);
+            if ($commande->getUser() === $this) {
+                $commande->setUser(null);
             }
         }
 
@@ -295,8 +295,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setCv(Cv $cv): static
     {
         // set the owning side of the relation if necessary
-        if ($cv->getUserId() !== $this) {
-            $cv->setUserId($this);
+        if ($cv->getUser() !== $this) {
+            $cv->setUser($this);
         }
 
         $this->cv = $cv;
@@ -316,7 +316,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if (!$this->factures->contains($facture)) {
             $this->factures->add($facture);
-            $facture->setUserId($this);
+            $facture->setUser($this);
         }
 
         return $this;
@@ -326,12 +326,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if ($this->factures->removeElement($facture)) {
             // set the owning side to null (unless already changed)
-            if ($facture->getUserId() === $this) {
-                $facture->setUserId(null);
+            if ($facture->getUser() === $this) {
+                $facture->setUser(null);
             }
         }
 
         return $this;
+    }
+
+    
+    public function __toString()
+    {
+        return "$this->name $this->firstname";            //peut etre changé firts_name, name, email = string, non null
     }
 
 }

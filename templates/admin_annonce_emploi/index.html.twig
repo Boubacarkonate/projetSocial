@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AnnonceEmploi index{% endblock %}
+
+{% block body %}
+    <h1>AnnonceEmploi index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Job</th>
+                <th>Description</th>
+                <th>Localization</th>
+                <th>Created_at</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for annonce_emploi in annonce_emplois %}
+            <tr>
+                <td>{{ annonce_emploi.id }}</td>
+                <td>{{ annonce_emploi.job }}</td>
+                <td>{{ annonce_emploi.description }}</td>
+                <td>{{ annonce_emploi.localization }}</td>
+                <td>{{ annonce_emploi.createdAt ? annonce_emploi.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_admin_annonce_emploi_show', {'id': annonce_emploi.id}) }}">show</a>
+                    <a href="{{ path('app_admin_annonce_emploi_edit', {'id': annonce_emploi.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_annonce_emploi_new') }}">Create new</a>
+{% endblock %}

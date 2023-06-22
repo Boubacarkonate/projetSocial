@@ -102,7 +102,7 @@ class Forfait
     {
         if (!$this->commandes->contains($commande)) {
             $this->commandes->add($commande);
-            $commande->setForfaitId($this);
+            $commande->setForfait($this);
         }
 
         return $this;
@@ -112,8 +112,8 @@ class Forfait
     {
         if ($this->commandes->removeElement($commande)) {
             // set the owning side to null (unless already changed)
-            if ($commande->getForfaitId() === $this) {
-                $commande->setForfaitId(null);
+            if ($commande->getForfait() === $this) {
+                $commande->setForfait(null);
             }
         }
 

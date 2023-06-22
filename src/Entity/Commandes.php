@@ -76,36 +76,36 @@ class Commandes
         return $this;
     }
 
-    public function getForfaitId(): ?Forfait
+    public function getForfait(): ?Forfait
     {
         return $this->forfait;
     }
 
-    public function setForfaitId(?Forfait $forfait): static
+    public function setForfait(?Forfait $forfait): static
     {
         $this->forfait = $forfait;
 
         return $this;
     }
 
-    public function getFactureId(): ?Facture
+    public function getFacture(): ?Facture
     {
         return $this->facture;
     }
 
-    public function setFactureId(?Facture $facture): static
+    public function setFacture(?Facture $facture): static
     {
         $this->facture = $facture;
 
         return $this;
     }
 
-    public function getUserId(): ?User
+    public function getUser(): ?User
     {
         return $this->user;
     }
 
-    public function setUserId(?User $user): static
+    public function setUser(?User $user): static
     {
         $this->user = $user;
 
