@@ -26,13 +26,6 @@ class AnnonceEmploi
     #[ORM\Column]
     private ?\DateTimeImmutable $created_at = null;
 
-    #[ORM\ManyToOne(inversedBy: 'annonceEmplois')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Categorie $categorie_id = null;
-
-    #[ORM\ManyToOne(inversedBy: 'annoncesEmplois_id')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?User $user = null;
 
     public function getId(): ?int
     {
@@ -83,30 +76,6 @@ class AnnonceEmploi
     public function setCreatedAt(\DateTimeImmutable $created_at): static
     {
         $this->created_at = $created_at;
-
-        return $this;
-    }
-
-    public function getCategorieId(): ?Categorie
-    {
-        return $this->categorie_id;
-    }
-
-    public function setCategorieId(?Categorie $categorie_id): static
-    {
-        $this->categorie_id = $categorie_id;
-
-        return $this;
-    }
-
-    public function getUser(): ?User
-    {
-        return $this->user;
-    }
-
-    public function setUser(?User $user): static
-    {
-        $this->user = $user;
 
         return $this;
     }
