@@ -3,13 +3,14 @@
 namespace App\Controller\Admin;
 
 use App\Entity\AnnonceEmploi;
-use App\Form\AdminForm\AdminAnnonceEmploiType;
 use App\Repository\AnnonceEmploiRepository;
 use Symfony\Component\HttpFoundation\Request;
+use App\Form\AdminForm\AdminAnnonceEmploiType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-
+#[IsGranted("ROLE_ADMIN")]
 #[Route('/admin/annonce')]
 class AdminAnnonceEmploiController extends AbstractController
 {
