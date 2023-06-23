@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Candidat;
 
 use App\Entity\Cv;
 use App\Form\CvType;
