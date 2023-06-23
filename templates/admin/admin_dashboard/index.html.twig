@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdminDashboardController!{% endblock %}
+
+{% block body %}
+DASHBOARD
+
+<div class="container">
+    <div class="row ">
+
+        <div class="col-12 border-light bg-white p-2">
+            <h1>Administrateur</h1>
+
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                <div class="col">
+                  
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                        <button class="btn btn-warning btn-lg" type="button"><a href="{{ path('app_admin_user_index') }} "class="link-danger">Gestion des
+                            utilisateurs</a></button>
+                        
+                      </div>
+                </div>
+
+
+                <div class="col">
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                        <button class="btn btn-primary btn-lg" type="button"><a href="{{ path('app_admin_forfait_index') }}" class="link-body-emphasis">Gestion des
+                            abonnements</a></button>
+                      </div>
+                </div>
+
+                <div class="col">
+                 
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                        <button class="btn btn-primary btn-lg" type="button"><a href="{{ path('app_admin_categorie_index') }}"class="link-body-emphasis">Gestion des
+                            catégories</a></button>
+                        
+                      </div>
+                </div>
+
+                <div class="col">
+                  
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                        <button class="btn btn-primary btn-lg " type="button"><a href="{{ path('app_admin_cv_index') }}" class="link-body-emphasis">Gestion des
+                            Curriculums vitae</a></button>
+                        
+                      </div>
+                </div>
+
+                <div class="col">
+                    
+                    <div class="d-grid gap-2 col-6 mx-auto ">
+                        <button class="btn btn-primary btn-lg" type="button"><a href="{{ path('app_cvtheque') }}" class="link-body-emphasis">Gestion de la Cvthèque
+                        </a></button>
+                        
+                      </div>
+                </div>
+
+                <div class="col">
+                   
+                    <div class="d-grid gap-2 col-6 mx-auto ">
+                        <button class="btn btn-primary btn-lg" type="button"><a href="{{ path('app_admin_annonce_emploi_index') }}" class="link-body-emphasis">Gestion des
+                            offres d'emploi</a></button>
+                        
+                      </div>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}
