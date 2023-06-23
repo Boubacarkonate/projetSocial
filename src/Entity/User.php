@@ -67,9 +67,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Cv::class, orphanRemoval: true)]
     private Collection $cvs;
 
-    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Post::class, orphanRemoval: true)]
-    private Collection $posts;
-
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Commentaire::class, orphanRemoval: true)]
+    private Collection $commentaires;
    
 
     public function __construct()
@@ -78,9 +77,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->commandes = new ArrayCollection();
         $this->factures = new ArrayCollection();
         $this->cvs = new ArrayCollection();
-        $this->posts = new ArrayCollection();
-     
-        
+        $this->commentaires = new ArrayCollection();
+   
     }
 
    
@@ -367,36 +365,35 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * @return Collection<int, Post>
+     * @return Collection<int, Commentaire>
      */
-    public function getPosts(): Collection
+    public function getCommentaires(): Collection
     {
-        return $this->posts;
+        return $this->commentaires;
     }
 
-    public function addPost(Post $post): static
+    public function addCommentaire(Commentaire $commentaire): static
     {
-        if (!$this->posts->contains($post)) {
-            $this->posts->add($post);
-            $post->setUser($this);
+        if (!$this->commentaires->contains($commentaire)) {
+            $this->commentaires->add($commentaire);
+            $commentaire->setUser($this);
         }
 
         return $this;
     }
 
-    public function removePost(Post $post): static
+    public function removeCommentaire(Commentaire $commentaire): static
     {
-        if ($this->posts->removeElement($post)) {
+        if ($this->commentaires->removeElement($commentaire)) {
             // set the owning side to null (unless already changed)
-            if ($post->getUser() === $this) {
-                $post->setUser(null);
+            if ($commentaire->getUser() === $this) {
+                $commentaire->setUser(null);
             }
         }
 
         return $this;
     }
 
-   
 
  
 

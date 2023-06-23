@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AnnonceEmploi{% endblock %}
+
+{% block body %}
+    <h1>AnnonceEmploi</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ annonce.id }}</td>
+            </tr>
+            <tr>
+                <th>Job</th>
+                <td>{{ annonce.job }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ annonce.description }}</td>
+            </tr>
+            <tr>
+                <th>Localization</th>
+                <td>{{ annonce.localization }}</td>
+            </tr>
+            <tr>
+                <th>Created_at</th>
+                <td>{{ annonce.createdAt ? annonce.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_area_candidat_annonce_index') }}">back to list</a>
+
+{% endblock %}
