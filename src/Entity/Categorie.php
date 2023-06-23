@@ -24,7 +24,10 @@ class Categorie
     #[ORM\OneToMany(mappedBy: 'categorie', targetEntity: Cv::class)]
     private Collection $cvs;
 
-    
+   
+
+   
+
 
    
 
@@ -32,6 +35,8 @@ class Categorie
     {
         $this->annonceEmplois = new ArrayCollection();
         $this->cvs = new ArrayCollection();
+       
+      
        
        
     }

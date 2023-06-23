@@ -64,7 +64,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Facture::class, orphanRemoval: true)]
     private Collection $factures;
 
-    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Cv::class)]
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Cv::class, orphanRemoval: true)]
     private Collection $cvs;
 
    
@@ -75,6 +75,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->commandes = new ArrayCollection();
         $this->factures = new ArrayCollection();
         $this->cvs = new ArrayCollection();
+     
         
     }
 
@@ -361,6 +362,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    
+   
+
+ 
 
 }

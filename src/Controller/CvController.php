@@ -17,10 +17,16 @@ class CvController extends AbstractController
     #[Route('/', name: 'app_cv_index', methods: ['GET'])]
     public function index(CvRepository $cvRepository): Response
     {
-      
+        $user = $this->getUser();                           //récupération de données de l'user connecté
+
+        $cv = $cvRepository->findBy([                       //récupération des données du champ user de l'entité annonceEmploiRepository    
+            'user' => $user,
+           
+        ]);
 
         return $this->render('area/candidat/cv/index.html.twig', [
-            'cvs' => $cvRepository->findAll(),
+            'user' => $user,
+            'cv' => $cv,
         ]);
     }
 
@@ -104,13 +110,13 @@ class CvController extends AbstractController
         ]);
     }
 
-    // #[Route('/{id}', name: 'app_cv_delete', methods: ['POST'])]
-    // public function delete(Request $request, Cv $cv, CvRepository $cvRepository): Response
-    // {
-    //     if ($this->isCsrfTokenValid('delete'.$cv->getId(), $request->request->get('_token'))) {
-    //         $cvRepository->remove($cv, true);
-    //     }
+    #[Route('/{id}', name: 'app_cv_delete', methods: ['POST'])]
+    public function delete(Request $request, Cv $cv, CvRepository $cvRepository): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$cv->getId(), $request->request->get('_token'))) {
+            $cvRepository->remove($cv, true);
+        }
 
-    //     return $this->redirectToRoute('app_cv_index', [], Response::HTTP_SEE_OTHER);
-    // }
+        return $this->redirectToRoute('app_cv_index', [], Response::HTTP_SEE_OTHER);
+    }
 }

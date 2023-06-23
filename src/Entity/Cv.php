@@ -19,7 +19,7 @@ class Cv
     #[ORM\Column(length: 255)]
     private ?string $job = null;
 
-    #[ORM\Column(nullable: true)]
+    #[ORM\Column]
     private ?\DateTimeImmutable $created_at = null;
 
     #[ORM\Column(nullable: true)]
@@ -32,8 +32,6 @@ class Cv
     #[ORM\ManyToOne(inversedBy: 'cvs')]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
-
-
 
     public function getId(): ?int
     {
@@ -69,7 +67,7 @@ class Cv
         return $this->created_at;
     }
 
-    public function setCreatedAt(?\DateTimeImmutable $created_at): static
+    public function setCreatedAt(\DateTimeImmutable $created_at): static
     {
         $this->created_at = $created_at;
 
@@ -111,5 +109,4 @@ class Cv
 
         return $this;
     }
-
 }

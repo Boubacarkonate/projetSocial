@@ -17,16 +17,16 @@
             </tr>
         </thead>
         <tbody>
-        {% for cv in cvs %}
+        {% for moncv in cv %}
             <tr>
-                <td>{{ cv.id }}</td>
-                <td>{{ cv.job }}</td>
-                <td>{{ cv.createdAt ? cv.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ cv.updatedAt ? cv.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ cv.cvCandidat }}</td>
+                <td>{{ moncv.id }}</td>
+                <td>{{ moncv.job }}</td>
+                <td>{{ moncv.createdAt ? moncv.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ moncv.updatedAt ? moncv.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ moncv.cvCandidat }}</td>
                 <td>
-                    <a href="{{ path('app_cv_show', {'id': cv.id}) }}">show</a>
-                    <a href="{{ path('app_cv_edit', {'id': cv.id}) }}">edit</a>
+                    <a href="{{ path('app_cv_show', {'id': moncv.id}) }}">show</a>
+                    <a href="{{ path('app_cv_edit', {'id': moncv.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
