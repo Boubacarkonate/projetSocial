@@ -24,10 +24,16 @@ class Categorie
     #[ORM\OneToMany(mappedBy: 'categorie', targetEntity: Cv::class)]
     private Collection $cvs;
 
+    
+
+   
+
     public function __construct()
     {
         $this->annonceEmplois = new ArrayCollection();
         $this->cvs = new ArrayCollection();
+       
+       
     }
 
    
@@ -79,6 +85,13 @@ class Categorie
         return $this;
     }
 
+   
+
+    public function __toString()
+    {
+        return $this->sector;            //méthode magique => convertisseur en string
+    }
+
     /**
      * @return Collection<int, Cv>
      */
@@ -109,10 +122,6 @@ class Categorie
         return $this;
     }
 
-    public function __toString()
-    {
-        return $this->sector;            //méthode magique => convertisseur en string
-    }
-
+   
 
 }

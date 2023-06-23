@@ -14,9 +14,12 @@ class Cv
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    private ?string $cv_candidat = null;
+
+    #[ORM\Column(length: 255)]
     private ?string $job = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $created_at = null;
 
     #[ORM\Column(nullable: true)]
@@ -26,17 +29,27 @@ class Cv
     #[ORM\JoinColumn(nullable: false)]
     private ?Categorie $categorie = null;
 
-    #[ORM\OneToOne(inversedBy: 'cv', cascade: ['persist', 'remove'])]
+    #[ORM\ManyToOne(inversedBy: 'cvs')]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $cv_candidat = null;
 
-   
+
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getCvCandidat(): ?string
+    {
+        return $this->cv_candidat;
+    }
+
+    public function setCvCandidat(string $cv_candidat): static
+    {
+        $this->cv_candidat = $cv_candidat;
+
+        return $this;
     }
 
     public function getJob(): ?string
@@ -56,7 +69,7 @@ class Cv
         return $this->created_at;
     }
 
-    public function setCreatedAt(\DateTimeImmutable $created_at): static
+    public function setCreatedAt(?\DateTimeImmutable $created_at): static
     {
         $this->created_at = $created_at;
 
@@ -92,22 +105,11 @@ class Cv
         return $this->user;
     }
 
-    public function setUser(User $user): static
+    public function setUser(?User $user): static
     {
         $this->user = $user;
 
         return $this;
     }
 
-    public function getCvCandidat(): ?string
-    {
-        return $this->cv_candidat;
-    }
-
-    public function setCvCandidat(string $cv_candidat): static
-    {
-        $this->cv_candidat = $cv_candidat;
-
-        return $this;
-    }
 }

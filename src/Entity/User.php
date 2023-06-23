@@ -44,7 +44,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $phone = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $created_at = null;
 
     #[ORM\Column(nullable: true)]
@@ -59,17 +59,23 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Commandes::class, orphanRemoval: true)]
     private Collection $commandes;
 
-    #[ORM\OneToOne(mappedBy: 'user', cascade: ['persist', 'remove'])]
-    private ?Cv $cv = null;
+
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Facture::class, orphanRemoval: true)]
     private Collection $factures;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Cv::class)]
+    private Collection $cvs;
+
+   
 
     public function __construct()
     {
         $this->annonceEmplois = new ArrayCollection();
         $this->commandes = new ArrayCollection();
         $this->factures = new ArrayCollection();
+        $this->cvs = new ArrayCollection();
+        
     }
 
    
@@ -287,22 +293,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getCv(): ?Cv
-    {
-        return $this->cv;
-    }
-
-    public function setCv(Cv $cv): static
-    {
-        // set the owning side of the relation if necessary
-        if ($cv->getUser() !== $this) {
-            $cv->setUser($this);
-        }
-
-        $this->cv = $cv;
-
-        return $this;
-    }
+  
 
     /**
      * @return Collection<int, Facture>
@@ -339,5 +330,37 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         return "$this->name $this->firstname";            //peut etre changé firts_name, name, email = string, non null
     }
+
+    /**
+     * @return Collection<int, Cv>
+     */
+    public function getCvs(): Collection
+    {
+        return $this->cvs;
+    }
+
+    public function addCv(Cv $cv): static
+    {
+        if (!$this->cvs->contains($cv)) {
+            $this->cvs->add($cv);
+            $cv->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCv(Cv $cv): static
+    {
+        if ($this->cvs->removeElement($cv)) {
+            // set the owning side to null (unless already changed)
+            if ($cv->getUser() === $this) {
+                $cv->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    
 
 }

@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Cv;
 use App\Repository\CvRepository;
 use App\Form\AdminForm\AdminCvType;
+use App\Service\FileUploader;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -23,15 +24,33 @@ class AdminCvController extends AbstractController
     }
 
     #[Route('/new', name: 'app_admin_cv_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, CvRepository $cvRepository): Response
+    public function new(Request $request, CvRepository $cvRepository, FileUploader $fileUploader): Response
     {
+        $user = $this->getUser();
         $cv = new Cv();
-        $form = $this->createForm(AdminCvType::class, $cv);
+
+        if($user){
+            
+            $cv->setUser($user);                    //affichera l'user correspondant
+          }
+
+        
+        $form = $this->createForm(CvType::class, $cv);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $cv->setCreatedAt(new \DateTimeImmutable());
+            $cv ->setCreatedAt(new \DateTimeImmutable());             //creation nouvelle date et heure
+            $cv->setUser($this->getUser());
+            $cvChampForm = $form->get('cv_candidat')->getData();
+
+            if ($cvChampForm) {
+                
+                $cvTelecharge = $fileUploader->upload($cvChampForm);
+
+                $cv->setCvCandidat($cvTelecharge);
+          
+            }
 
             $cvRepository->save($cv, true);
 
