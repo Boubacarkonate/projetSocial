@@ -61,6 +61,9 @@ class CvController extends AbstractController
             }
 
             $cvRepository->save($cv, true);
+
+            $this->addFlash('succes', 'Votre curriculum vitae a bien été enregistré !');
+
             return $this->redirectToRoute('app_cv_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -101,6 +104,8 @@ class CvController extends AbstractController
             }
             $cvRepository->save($cv, true);
 
+            $this->addFlash('succes', 'Votre curriculum vitae a bien été enregistré !');
+
             return $this->redirectToRoute('app_cv_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -116,6 +121,8 @@ class CvController extends AbstractController
         if ($this->isCsrfTokenValid('delete'.$cv->getId(), $request->request->get('_token'))) {
             $cvRepository->remove($cv, true);
         }
+
+        $this->addFlash('danger', 'Votre curriculum vitae a bien été supprimé !');
 
         return $this->redirectToRoute('app_cv_index', [], Response::HTTP_SEE_OTHER);
     }

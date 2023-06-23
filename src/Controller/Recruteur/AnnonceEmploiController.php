@@ -49,6 +49,8 @@ class AnnonceEmploiController extends AbstractController
             $annonceEmploi->setCreatedAt(new \DateTimeImmutable());
             $annonceEmploiRepository->save($annonceEmploi, true);
 
+            $this->addFlash('succes', 'Votre annonce a bien été enregistré !');
+
             return $this->redirectToRoute('app_annonce_emploi_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -75,6 +77,8 @@ class AnnonceEmploiController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $annonceEmploiRepository->save($annonceEmploi, true);
 
+            $this->addFlash('succes', 'Votre annonce a bien été enregistré !');
+
             return $this->redirectToRoute('app_annonce_emploi_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -90,6 +94,8 @@ class AnnonceEmploiController extends AbstractController
         if ($this->isCsrfTokenValid('delete'.$annonceEmploi->getId(), $request->request->get('_token'))) {
             $annonceEmploiRepository->remove($annonceEmploi, true);
         }
+
+        $this->addFlash('danger', 'Votre annonce a bien été supprimé !');
 
         return $this->redirectToRoute('app_annonce_emploi_index', [], Response::HTTP_SEE_OTHER);
     }
