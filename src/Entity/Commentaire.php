@@ -15,7 +15,7 @@ class Commentaire
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $title = null;
+    private ?string $job = null;
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
@@ -24,19 +24,22 @@ class Commentaire
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
+    #[ORM\Column]
+    private ?\DateTimeImmutable $created_at = null;
+
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getTitle(): ?string
+    public function getJob(): ?string
     {
-        return $this->title;
+        return $this->job;
     }
 
-    public function setTitle(string $title): static
+    public function setJob(string $job): static
     {
-        $this->title = $title;
+        $this->job = $job;
 
         return $this;
     }
@@ -61,6 +64,18 @@ class Commentaire
     public function setUser(?User $user): static
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeImmutable
+    {
+        return $this->created_at;
+    }
+
+    public function setCreatedAt(\DateTimeImmutable $created_at): static
+    {
+        $this->created_at = $created_at;
 
         return $this;
     }
