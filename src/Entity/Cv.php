@@ -33,6 +33,9 @@ class Cv
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $photo = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -108,5 +111,22 @@ class Cv
         $this->user = $user;
 
         return $this;
+    }
+
+    public function getPhoto(): ?string
+    {
+        return $this->photo;
+    }
+
+    public function setPhoto(?string $photo): static
+    {
+        $this->photo = $photo;
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->cv_candidat;            //méthode magique => convertisseur en string
     }
 }

@@ -11,9 +11,9 @@
         <div class="card" style="width: 18rem;">
             <img src="{{ asset('media/cvModel.png') }}" class="card-img-top" alt="photo cv">
             <div class="card-body">
-                <h5 class="card-title"> Profession du candidat{{ cv.id }}</h5>  {#l'id sera enlevé #}
+                <h5 class="card-title"> {{ cv.job }}</h5>  {#l'id sera enlevé #}
                 <p class="card-text">Catégorie : {{ cv.categorie }}</p>
-                <a href="{{ asset('uploads/curriculumVitae/' ~ cv.cvCandidat ) }}" class="btn btn-primary">Voir Cv</a>
+                <a href="{{ asset('uploads/' ~ cv.cvCandidat ) }}" class="btn btn-primary">Voir Cv</a>
             </div>
         </div> 
     </div>

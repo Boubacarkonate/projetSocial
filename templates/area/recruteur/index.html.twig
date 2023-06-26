@@ -1,20 +1,75 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Hello AreaController!{% endblock %}
-
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/profile.css') }}">
+{% endblock %}
 {% block body %}
+<div class="bodyRecruteur">
+<div class="container">
     <h1>ESPACE RECRUTEUR ✅</h1>
 
     {% for flashMessage in app.flashes('info') %}
     <div class="alert alert-info alert-dismissible fade show" role="alert">
-        {{ flashMessage }} 
-       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> 
-    </div> 
+        {{ flashMessage }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
     {% endfor %}
+<div id="flex">
+    <div class="sidenav">
+        <p>tugfhjgjfthjft</p>
+        <a href=" {{ path('app_cvtheque') }} "class="btn btn-primary ">La CVthèque E-TALENT</a>
+        <p><a href=" {{ path('app_annonce_emploi_index') }}" class="btn btn-primary ">Vos annonces d'emploi</a></p>
+    </div>
+    <div class="profileRecruteur">
 
-<a href=" {{ path('app_forfait_index') }}">S'abonner pour accéder à la cvthèque</a>
-  <br>
+
+        <h2>Nom et Prénom</h2>
+        <p>{{ app.user.name }} {{ app.user.firstname }}</p>
+
+        <h2>Nom de la structure</h2>
+        <p>{{ app.user.company }}</p>
+
+        <h2>Email</h2>
+        <p>{{ app.user.email }}</p>
+
+        <h2>Téléphone</h2>
+        <p>{{ app.user.phone }}</p>
+
+        <h2>Abonnement à la CVtheque</h2>
+
+        {% if app.user.commandes %} <!--1 condidtion if : si le candidat  des données enregistrées dans l'entité CV -->
+
+        {% for commande in app.user.commandes %}
+        <!--2 initialisation de la boucle for : alors boucle sur dans l'entité pour récupérer ses données -->
+        <p>Forfait : {{ commande.forfait.name}}</p>
+        <p>Commencement : {{ commande.createdAt ? commande.createdAt|date('Y-m-d H:i:s') : ''}}</p>
+        <p>Fin : {{ commande.expireAt ? commande.expireAt|date('Y-m-d H:i:s') : ''}}</p>
+
+        <a href=" {{ path('app_forfait_index') }} " class="btn btn-primary">Choisir un forfait</a>
+
+        {% endfor %} <!--fermeture de boucle-->
+
+        {% endif %}
+        <!--fermeture de la condition if-->
+
+
+        <a href="{{ path('app_profile_edit', {'id': app.user.id}) }} " class="btn btn-primary">edit Profile</a>
+
+
+    </div>
+
+
+    <div id="fondBasPage">
+
+    </div>
+</div>
+</div>
+</div>
+{{dump(app.user)}}
+<!-- <a href=" {{ path('app_forfait_index') }}">S'abonner pour accéder à la cvthèque</a>
+<br>
 <a href=" {{ path('app_cvtheque') }}">Bienvenue dans la CVthèque E-TALENT</a>
-    <br>
-<a href=" {{ path('app_annonce_emploi_index') }}">Vos annonces d'emploi</a>
+<br>
+<a href=" {{ path('app_annonce_emploi_index') }}">Vos annonces d'emploi</a> -->
 {% endblock %}

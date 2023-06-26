@@ -1,29 +1,77 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AreaController!{% endblock %}
+{% block title %}Espace candidat{% endblock %}
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/profile.css') }}">
+{% endblock %}
 
 {% block body %}
-
+<div class="body">
 {% for flashMessage in app.flashes('succes') %}
-    <div class="alert alert-succes alert-dismissible fade show" role="alert">
-        {{ flashMessage }} 
-       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> 
-    </div> 
-    {% endfor %}
- {% for flashMessage in app.flashes('danger') %}
-    <div class="alert alert-succes alert-dismissible fade show" role="alert">
-        {{ flashMessage }} 
-       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> 
-    </div> 
-    {% endfor %}
-    
-    <h1>ESPACE CANDIDAT✅</h1>
+<div class="alert alert-succes alert-dismissible fade show" role="alert">
+   {{ flashMessage }}
+   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %}
+{% for flashMessage in app.flashes('danger') %}
+<div class="alert alert-succes alert-dismissible fade show" role="alert">
+   {{ flashMessage }}
+   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %}
 
-  <a href=" {{ path('app_forfait_index') }}">Voir mon compte</a>
+
+
+<h1>ESPACE CANDIDAT✅</h1>
+
+<div class="profile">
+<h2>Nom et Prénom</h2>
+<p>{{ app.user.name }} {{ app.user.firstname }}</p>
+
+<h2>Email</h2>
+<p>{{ app.user.email }}</p>
+
+<h2>Téléphone</h2>
+<p>{{ app.user.phone }}</p>
+
+<h2>Poste recherché</h2>
+
+{% if app.user.cvs %}                                       <!--1 condidtion if : si le candidat  des données enregistrées dans l'entité CV -->
+
+      {% for cv in app.user.cvs %}                             <!--2 initialisation de la boucle for : alors boucle sur dans l'entité pour récupérer ses données -->
+         <p>Métier : {{ cv.job}}</p>
+         <p>Catégorie : {{ cv.categorie}}</p>
+         <p>Curriculum vitae : <a href="{{ asset('uploads/' ~ cv.cvCandidat ) }}">voir CV</a></p>
+         <a href=" {{ path('app_cv_index') }} "class="btn btn-primary">Gérer mon cv</a>
+      
+   {% else %}                                                  <!--3 sinon de la condition if ultérieure : sinon fait le lien enregistrer apparaît pour introduire ses données dans l'entité Cv-->
+
+         <p>Compléter votre profil : <a href="{{ path('app_cv_new') }} "class="btn btn-primary">Enregistrer son cv</a></p>
+
+      {% endfor %}                                                         <!--fermeture de boucle-->
+
+{% endif %}  
+                                                               <!--fermeture de la condition if-->
+
+
+<a href="{{ path('app_profile_edit', {'id': app.user.id}) }} "class="btn btn-primary">edit Profile</a>
+
+
+</div>
+
+
+<div id="fondBasPage">
+
+</div>
+
+</div>
+
+
+<!-- <a href=" {{ path('app_forfait_index') }}">Voir mon compte</a>
   <br>
   <a href=" {{ path('app_cv_new') }}">Enregistrer son cv</a>
   <br>
-  <a href=" {{ path('app_cv_index') }}">Gérer mon cv</a>
+  
   <br>
-  <a href=" {{ path('app_cv_index') }}">Voir les offres d'emploi</a>
+  <a href=" {{ path('app_cv_index') }}">Voir les offres d'emploi</a> -->
 {% endblock %}

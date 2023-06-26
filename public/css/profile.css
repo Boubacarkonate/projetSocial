@@ -1,0 +1,52 @@
+/* #fond{
+    
+    background: white; 
+    clip-path: polygon(50% 0%, 100% 0, 100% 35%, 100% 60%, 80% 80%, 49% 90%, 20% 80%, 0 60%, 0% 35%, 0 0);
+
+
+    height: 40vh;
+} */
+
+body{
+    background: radial-gradient(ellipse, #2f56da, white); 
+}
+.bodyRecruteur{
+    background:white; 
+}
+.profile{
+   text-align: center;
+    border-radius: 25%;
+    background: white; 
+    width: 35%;
+    margin: auto;
+    margin-bottom: 50px;
+}
+.profileRecruteur{
+   text-align: center;
+    border-radius: 25%;
+    background: radial-gradient(ellipse, #2f56da, white); 
+    width: 35%;
+    margin: auto;
+    margin-bottom: 50px;
+}
+
+.profile h2{
+    color: #26429d;
+    padding-top: 15px;
+}
+.profileRecruteur h2{
+    color: #000000;
+    padding-top: 15px;
+}
+
+a{
+    margin: 25px;
+}
+
+#flex{
+    display: flex;
+}
+
+.sidenav{
+    padding-top: 15%;
+}

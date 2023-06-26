@@ -33,6 +33,7 @@
         </div>
     </div>
 <div class="container">
+  <section> 
     <h1>ETalent, en trois mots</h1>
     <p>Améliorez vos chances de recrutement, recherchez plus facilement des talents et rendez le processus de recrutement plus efficace.</p>
     <div class="row">
@@ -61,15 +62,20 @@
                 <div class="card-header"><i class="fa-regular fa-rectangle-list"></i></div>
                 <div class="card-body text-primary">
                     <h5 class="card-title">Soyez visibles</h5>
-                    <p class="card-text">Publiez et partargez vos offres d'emploi gratuitement afin d'être visible par les candidats membres du site.</p>
+                    <p class="card-text">Publiez vos offres d'emploi gratuitement afin d'être visible par les candidats membres du site et améliorer votre expérience recruteur.</p>
                 </div>
             </div>
         </div>
     </div>
+</section> 
+<section>
+<h2>Les différents métiers du médico-social</h2>
 
-    <section id="presentationMetier">
-        <h2>Les différents métiers du médico-social</h2>
-        <p>
+    <div class="container text-center">
+    <div class="presentation row bg-body-tertiary">
+        <div class="col-sm-7">
+
+        <p class="resume">
             Les métiers du social se répartissent en plusieurs domaines. On trouve les métiers de l'aide sociale et du
             conseil (assistant de service social, conseiller en économie sociale et familiale, médiateur familial…),
             ceux de l'éducation et des intervenants auprès d'enfants ou adultes en situation de handicap, d'enfants
@@ -83,17 +89,29 @@
             les fonctions d’encadrement et de direction (directeur des structures sociales).
             Afin d'illustrer ce petit résumé, nous verrons quelques descriptifs du de quelques métiers.
         </p>
+           <p> <iframe src="https://www.youtube.com/embed/0tPXRxjtXWE" title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+        
+        </p>
+    </div>
+
+    <div class="col-sm-5">
+        <!-- les différents liens suivants mènet à des ancre qui s'ouvrent dans une autre page  
+        VOIR MENU CIRCULAIRE : https://youtu.be/BaRC90ao4Ds  -->
         <div class="metierDuSocial">
-            <article> <!--les différents liens suivants mènet à des ancre qui s'ouvrent dans une autre page -->
-                <div class="article1"> {# VOIR MENU CIRCULAIRE : https://youtu.be/BaRC90ao4Ds #}
-                    <h3>Administration, expertise et encadrement</h3>
+            <article> 
+               <div class="article1"> 
+                    <h3>Expertise et encadrement</h3>
                     <ul>
                         <li><a href="{{ path('app_presentation_metiers_expertise') }}#directeur">Directeur
                                 d'établissement</a></li>
                         <li><a href="{{ path('app_presentation_metiers_expertise') }}#ingenieur">Ingénieur social</a>
                         </li>
                     </ul>
-                </div>
+                     
+                </div> 
+                
             </article>
             <article>
                 <div class="article2">
@@ -127,12 +145,80 @@
                 </div>
             </article>
         </div>
-        <aside>
+        <!-- <aside>
             <iframe src="https://www.youtube.com/embed/0tPXRxjtXWE" title="YouTube video player" frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen></iframe>
-        </aside>
-    </section>
+        </aside> -->
+    </div>
+    </div>
+    </div>
+    
+</section>
+<section>
+<h1>Nos clients en parlent mieux que nous !</h1>
+<p>Utilisez CVaden pour rechercher les meilleurs candidats et booster vos recrutements.</p>
+
+<div id="carouselExample" class="carousel slide">
+    <div class="carousel-inner">
+        {% for commentaire in commentaires %}
+            <div class="carousel-item{% if loop.first %} active{% endif %}">
+                <div class="row">
+                    <div class="card" style="width: 18rem;">
+                        <img src="..." class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ commentaire.job }}</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+
+
+<!-- <div id="carouselExampleFade" class="carousel slide carousel-fade">
+    <div class="carousel-inner">
+        {% for commentaire in commentaires %}
+            <div class="carousel-item{% if loop.first %} active{% endif %}">
+                <div class="comment">
+                    <p>{{ commentaire.description }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div> -->
+
+<!-- <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <ul class="card-identity">
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+      
+    </div>
+  </div> -->
+</section>
 
 
     <section>
