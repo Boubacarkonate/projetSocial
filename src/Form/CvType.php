@@ -44,7 +44,7 @@ class CvType extends AbstractType
             ],
         ])
         ->add('categorie')
-        ->add('user')
+       
         ;
     }
 

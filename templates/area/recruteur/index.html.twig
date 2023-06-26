@@ -46,8 +46,10 @@
         <p>Commencement : {{ commande.createdAt ? commande.createdAt|date('Y-m-d H:i:s') : ''}}</p>
         <p>Fin : {{ commande.expireAt ? commande.expireAt|date('Y-m-d H:i:s') : ''}}</p>
 
-        <a href=" {{ path('app_forfait_index') }} " class="btn btn-primary">Choisir un forfait</a>
+        {% else %}
 
+        <a href=" {{ path('app_forfait_index') }} " class="btn btn-primary">Choisir un forfait</a>
+        
         {% endfor %} <!--fermeture de boucle-->
 
         {% endif %}
