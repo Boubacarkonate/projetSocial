@@ -1,6 +1,12 @@
 twig:
     default_path: '%kernel.project_dir%/templates'
+    globals:
+        search: '@App\Twig\SearchExtension'
+
 
 when@test:
     twig:
         strict_variables: true
+
+
+

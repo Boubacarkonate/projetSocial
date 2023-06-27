@@ -81,17 +81,17 @@
         transition:4s ;
     } */
 
-    #fond{
-        /* background: #5d686d;  */
+    /*********************************************************************************
+                            arrière du bouton
+    *********************************************************************************/
+
+    #fondEspaceMenu{                                              /*background de la section du bouton des espaces*/
         background: radial-gradient(ellipse, #2f56da, white); 
         clip-path: polygon(50% 0%, 100% 0, 100% 35%, 100% 60%, 80% 80%, 49% 90%, 20% 80%, 0 60%, 0% 35%, 0 0);
-
-
         height: 65vh;
     }
 
-    
-    #bloc{
+    #blocEspaceMenu{                    /*conteneur du bouton espace*/
       
         display: flex;
         flex-direction: column;
@@ -99,10 +99,7 @@
        gap: 100px;                  /*gap permet de mettre des espace entre mes elements flexbox*/
     }
     
-    #bloc section{
-        margin: 0 100px ;
-       /* margin-top: 60px;           margin-top pour baisser le bouton*/
-    }
+
     
     /**************************************************************************
                                 le bouton menu
@@ -244,27 +241,14 @@
       }
       
       
-      /* .apparation{
-          width: 100px;
-          height: 100px;
-      }
       
-      .disparation{
-          width: 50px;
-          height: 50px;
-      } */
-    
-    
-    
       /**************************************************************************
                         section des differents metiers
     *****************************************************************************/
-    h2{
+    h2{                                 /*tous les h2 de la page sont centrés*/
         text-align: center;
     }
-    /* .presentation{
-        border: solid;
-    } */
+   
     .resume{
         text-align: justify;
     }
@@ -316,13 +300,8 @@
     }
     
    
-
-    @media screen and (max-width: 1200px) {
-        #presentationMetier .metierDuSocial{
-            display: flex;
-            flex-direction: column;
-        } 
-    }*/
+*/
+    
 
     #fondBasPage{
         background: radial-gradient(ellipse, #2f56da, white); 
@@ -332,22 +311,26 @@
         height: 5vh;
     }
 
+
+
+
+/****************************************************************************************************/
     *{
         /* color: #ffffff; */
-        color: #26429d;
+        color: #26429d;                                 /*couleur appliquée à tout le texte*/
     }
-  /*   .body{
-        background: radial-gradient(ellipse, #2f56da, white); 
-    }*/
-h1{
+ 
+h1{                                                       /*titre de la page*/
     text-align: center;
 }
 
-h1 + p{
+h1 + p{                                                     /*paragraphe le titre de la page*/
     text-align: center;
 }
 
-
+/**********************************************************************
+            partie commentaires
+*********************************************************************/
 
 .carousel-inner {
     display: flex;
@@ -366,7 +349,24 @@ h1 + p{
     border: 1px solid #ccc;
     padding: 10px;
 }
-  
-   
+
+/****************************************************************************
+            Média queries
+*********************************************************************************/
+
+@media all and (max-width: 1000px) {
+        #fondBasPage{
+            display: none;
+        } 
+        #fondEspaceMenu{
+            height: 23vh;
+        }
+        #fondEspaceMenu p{
+            display: none;
+        }
+        #blocEspaceMenu{
+            display: none;
+        }
+    }    
     
     

@@ -4,13 +4,13 @@
 {% block stylesheets %}
 <link rel="stylesheet" href="{{ asset('css/home.css') }}">
 {% endblock %}
-
+{% block container %}
 {% block body %}
 <div class="body">
-    <div id="fond">
+    <div id="fondEspaceMenu">
         <h1>Trouvons ensemble votre prochain talent sur E-TALENT</h1>
         <p>Recherchez tous types de profils actifs ou à l’écoute du marché.</p>
-        <div id="bloc">
+        <div id="blocEspaceMenu">
             <section class="leMenu">
                 <div class="conteneur-menu" id="conteneur-menu">
                     <div class="bouton-menu" id="bouton-menu">
@@ -25,169 +25,192 @@
                         <a href="{{ path('app_area_candidat') }}">CANDIDAT</a>
                     </div>
 
-                    <!-- <div class="boule annonce">
-                    <a href="{{ path('app_presentation_metiers_expertise') }}">ANNONCES</a>
-                </div>  -->
                 </div>
-
+            </section>
         </div>
     </div>
-<div class="container">
-  <section> 
-    <h1>ETalent, en trois mots</h1>
-    <p>Améliorez vos chances de recrutement, recherchez plus facilement des talents et rendez le processus de recrutement plus efficace.</p>
-    <div class="row">
-        <div class="col">
-            <div class="card border-dark-subtle mb-3" style="max-width: 25rem;">
-                <div class="card-header"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></div>
-                <div class="card-body text-primary">
-                    <h5 class="card-title">Recherchez malin</h5>
-                    <p class="card-text">Bénéficiez d’une pertinence et d’une qualité de recherche optimale pour trouver les candidats correspondant à tous vos besoins.</p>
+    <div class="container">
+        <section>
+            <h2>ETalent, en trois mots</h2>
+            <p>Améliorez vos chances de recrutement, recherchez plus facilement des talents et rendez le processus de
+                recrutement plus efficace.</p>
+            <div class="row">
+                <div class="col">
+                    <div class="card border-dark-subtle mb-3" style="max-width: 25rem;">
+                        <div class="card-header"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></div>
+                        <div class="card-body text-primary">
+                            <h5 class="card-title">Recherchez malin</h5>
+                            <p class="card-text">Bénéficiez d’une pertinence et d’une qualité de recherche optimale pour
+                                trouver les candidats correspondant à tous vos besoins.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
 
-        <div class="col">
-            <div class="card border-primary mb-3" style="max-width: 25rem;">
-                <div class="card-header"><i class="fa-solid fa-hourglass-end"></i></div>
-                <div class="card-body text-primary">
-                    <h5 class="card-title">Gagnez du temps</h5>
-                    <p class="card-text">Recherchez et identifiez efficacement des talents grâce aux champs mots-clés, aux filtres et aux nombreuses fonctionnalités disponibles.</p>
+                <div class="col">
+                    <div class="card border-primary mb-3" style="max-width: 25rem;">
+                        <div class="card-header"><i class="fa-solid fa-hourglass-end"></i></div>
+                        <div class="card-body text-primary">
+                            <h5 class="card-title">Gagnez du temps</h5>
+                            <p class="card-text">Recherchez et identifiez efficacement des talents grâce aux champs
+                                mots-clés, aux filtres et aux nombreuses fonctionnalités disponibles.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
 
-        <div class="col">
-            <div class="card border-primary mb-3" style="max-width: 25rem;">
-                <div class="card-header"><i class="fa-regular fa-rectangle-list"></i></div>
-                <div class="card-body text-primary">
-                    <h5 class="card-title">Soyez visibles</h5>
-                    <p class="card-text">Publiez vos offres d'emploi gratuitement afin d'être visible par les candidats membres du site et améliorer votre expérience recruteur.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section> 
-<section>
-<h2>Les différents métiers du médico-social</h2>
-
-    <div class="container text-center">
-    <div class="presentation row bg-body-tertiary">
-        <div class="col-sm-7">
-
-        <p class="resume">
-            Les métiers du social se répartissent en plusieurs domaines. On trouve les métiers de l'aide sociale et du
-            conseil (assistant de service social, conseiller en économie sociale et familiale, médiateur familial…),
-            ceux de l'éducation et des intervenants auprès d'enfants ou adultes en situation de handicap, d'enfants
-            placés ou de jeunes délinquants (animateur socio-culture , éducateur spécialisé, éducateur technique
-            spécialisé,
-            conseiller d’insertion et de probation …), les métiers des services à la personne qui travaillent parfois au
-            domicile des personnes (accompagnant éducatif et social, technicien de l'intervention sociale et familiale,
-            assistant maternel…) ou à leur propre domicile (assistant familial), et ceux qui interviennent dans
-            l'insertion professionnelle (chargé d'insertion professionnelle, par exemple). De manière transversale, il
-            existe aussi
-            les fonctions d’encadrement et de direction (directeur des structures sociales).
-            Afin d'illustrer ce petit résumé, nous verrons quelques descriptifs du de quelques métiers.
-        </p>
-           <p> <iframe src="https://www.youtube.com/embed/0tPXRxjtXWE" title="YouTube video player" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen></iframe>
-        
-        </p>
-    </div>
-
-    <div class="col-sm-5">
-        <!-- les différents liens suivants mènet à des ancre qui s'ouvrent dans une autre page  
-        VOIR MENU CIRCULAIRE : https://youtu.be/BaRC90ao4Ds  -->
-        <div class="metierDuSocial">
-            <article> 
-               <div class="article1"> 
-                    <h3>Expertise et encadrement</h3>
-                    <ul>
-                        <li><a href="{{ path('app_presentation_metiers_expertise') }}#directeur">Directeur
-                                d'établissement</a></li>
-                        <li><a href="{{ path('app_presentation_metiers_expertise') }}#ingenieur">Ingénieur social</a>
-                        </li>
-                    </ul>
-                     
-                </div> 
-                
-            </article>
-            <article>
-                <div class="article2">
-                    <h3>Aide et conseil</h3>
-                    <ul>
-                        <li><a href="{{ path('app_presentation_metiers_aideconseil') }}#assistantSocial">Assistant de
-                                service social</a></li>
-                        <li><a href="{{ path('app_presentation_metiers_aideconseil') }}#auxiliaire">Auxiliaire de vie
-                                sociale</a></li>
-                        <li><a href="{{ path('app_presentation_metiers_aideconseil') }}#cesf">Conseiller en économie
-                                sociale et familiale</a></li>
-                    </ul>
-                </div>
-            </article>
-            <article>
-                <div class="article3">
-                    <h3>Éducation et animation</h3>
-                    <ul>
-                        <li><a href="{{ path('app_presentation_metiers_educationanimation') }}#educSpe">Educateur
-                                spécialisé</a></li>
-                        <li><a href="{{ path('app_presentation_metiers_educationanimation') }}#educTech">Educateur
-                                technique spécialisé</a></li>
-                        <li><a href="{{ path('app_presentation_metiers_educationanimation') }}#educEnfant">Educateur
-                                jeunes enfants</a></li>
-                        <li><a href="{{ path('app_presentation_metiers_educationanimation') }}#moniteur">Moniteur
-                                éducateur</a></li>
-                        <li><a href="{{ path('app_presentation_metiers_educationanimation') }}#amp">Aide
-                                medico-psychologique</a></li>
-                        <li><a href="{{ path('app_presentation_metiers_educationanimation') }}#anim">Animateur</a></li>
-                    </ul>
-                </div>
-            </article>
-        </div>
-        <!-- <aside>
-            <iframe src="https://www.youtube.com/embed/0tPXRxjtXWE" title="YouTube video player" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen></iframe>
-        </aside> -->
-    </div>
-    </div>
-    </div>
-    
-</section>
-<section>
-<h1>Nos clients en parlent mieux que nous !</h1>
-<p>Utilisez CVaden pour rechercher les meilleurs candidats et booster vos recrutements.</p>
-
-<div id="carouselExample" class="carousel slide">
-    <div class="carousel-inner">
-        {% for commentaire in commentaires %}
-            <div class="carousel-item{% if loop.first %} active{% endif %}">
-                <div class="row">
-                    <div class="card" style="width: 18rem;">
-                        <img src="..." class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ commentaire.job }}</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <div class="col">
+                    <div class="card border-primary mb-3" style="max-width: 25rem;">
+                        <div class="card-header"><i class="fa-regular fa-rectangle-list"></i></div>
+                        <div class="card-body text-primary">
+                            <h5 class="card-title">Soyez visibles</h5>
+                            <p class="card-text">Publiez vos offres d'emploi gratuitement afin d'être visible par les
+                                candidats membres du site et améliorer votre expérience recruteur.</p>
                         </div>
                     </div>
                 </div>
             </div>
-        {% endfor %}
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-    </button>
-</div>
+        </section>
+        <section class="presentation">
+            <h2>Les différents métiers du médico-social</h2>
+
+            <div class="container text-center">
+                <div class=" row bg-body-tertiary">
+                    <div class="col-sm-7">
+
+                        <p class="resume">
+                            Les métiers du social se répartissent en plusieurs domaines. On trouve les métiers de l'aide
+                            sociale et du
+                            conseil (assistant de service social, conseiller en économie sociale et familiale, médiateur
+                            familial…),
+                            ceux de l'éducation et des intervenants auprès d'enfants ou adultes en situation de
+                            handicap, d'enfants
+                            placés ou de jeunes délinquants (animateur socio-culture , éducateur spécialisé, éducateur
+                            technique
+                            spécialisé,
+                            conseiller d’insertion et de probation …), les métiers des services à la personne qui
+                            travaillent parfois au
+                            domicile des personnes (accompagnant éducatif et social, technicien de l'intervention
+                            sociale et familiale,
+                            assistant maternel…) ou à leur propre domicile (assistant familial), et ceux qui
+                            interviennent dans
+                            l'insertion professionnelle (chargé d'insertion professionnelle, par exemple). De manière
+                            transversale, il
+                            existe aussi
+                            les fonctions d’encadrement et de direction (directeur des structures sociales).
+                            Afin d'illustrer ce petit résumé, nous verrons quelques descriptifs du de quelques métiers.
+                        </p>
+                        <p> <iframe src="https://www.youtube.com/embed/0tPXRxjtXWE" title="YouTube video player"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen></iframe>
+
+                        </p>
+                    </div>
+
+                    <div class="col-sm-5">
+                        <!-- les différents liens suivants mènet à des ancre qui s'ouvrent dans une autre page  
+        VOIR MENU CIRCULAIRE : https://youtu.be/BaRC90ao4Ds  -->
+                        <div class="metierDuSocial">
+                            <article>
+                                <div class="article1">
+                                    <h3>Expertise et encadrement</h3>
+                                    <ul>
+                                        <li><a href="{{ path('app_presentation_metiers_expertise') }}#directeur">Directeur
+                                                d'établissement</a></li>
+                                        <li><a href="{{ path('app_presentation_metiers_expertise') }}#ingenieur">Ingénieur
+                                                social</a>
+                                        </li>
+                                    </ul>
+
+                                </div>
+
+                            </article>
+                            <article>
+                                <div class="article2">
+                                    <h3>Aide et conseil</h3>
+                                    <ul>
+                                        <li><a
+                                                href="{{ path('app_presentation_metiers_aideconseil') }}#assistantSocial">Assistant
+                                                de
+                                                service social</a></li>
+                                        <li><a href="{{ path('app_presentation_metiers_aideconseil') }}#auxiliaire">Auxiliaire
+                                                de vie
+                                                sociale</a></li>
+                                        <li><a href="{{ path('app_presentation_metiers_aideconseil') }}#cesf">Conseiller
+                                                en économie
+                                                sociale et familiale</a></li>
+                                    </ul>
+                                </div>
+                            </article>
+                            <article>
+                                <div class="article3">
+                                    <h3>Éducation et animation</h3>
+                                    <ul>
+                                        <li><a href="{{ path('app_presentation_metiers_educationanimation') }}#educSpe">Educateur
+                                                spécialisé</a></li>
+                                        <li><a
+                                                href="{{ path('app_presentation_metiers_educationanimation') }}#educTech">Educateur
+                                                technique spécialisé</a></li>
+                                        <li><a
+                                                href="{{ path('app_presentation_metiers_educationanimation') }}#educEnfant">Educateur
+                                                jeunes enfants</a></li>
+                                        <li><a
+                                                href="{{ path('app_presentation_metiers_educationanimation') }}#moniteur">Moniteur
+                                                éducateur</a></li>
+                                        <li><a href="{{ path('app_presentation_metiers_educationanimation') }}#amp">Aide
+                                                medico-psychologique</a></li>
+                                        <li><a
+                                                href="{{ path('app_presentation_metiers_educationanimation') }}#anim">Animateur</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </article>
+                        </div>
+                        <!-- <aside>
+            <iframe src="https://www.youtube.com/embed/0tPXRxjtXWE" title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+        </aside> -->
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <section>
+            <h2>Nos clients en parlent mieux que nous !</h2>
+            <p>Utilisez CVaden pour rechercher les meilleurs candidats et booster vos recrutements.</p>
+
+            <div id="carouselExample" class="carousel slide">
+                <div class="carousel-inner">
+                    {% for commentaire in commentaires %}
+                    <div class="carousel-item{% if loop.first %} active{% endif %}">
+                        <div class="row">
+                            <div class="card" style="width: 18rem;">
+                                <img src="..." class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ commentaire.job }}</h5>
+                                    <p class="card-text">Some quick example text to build on the card title and make up
+                                        the bulk of the card's content.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
 
 
 
-<!-- <div id="carouselExampleFade" class="carousel slide carousel-fade">
+            <!-- <div id="carouselExampleFade" class="carousel slide carousel-fade">
     <div class="carousel-inner">
         {% for commentaire in commentaires %}
             <div class="carousel-item{% if loop.first %} active{% endif %}">
@@ -207,7 +230,7 @@
     </button>
 </div> -->
 
-<!-- <div class="card" style="width: 18rem;">
+            <!-- <div class="card" style="width: 18rem;">
     <div class="card-body">
       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
       <ul class="card-identity">
@@ -218,41 +241,46 @@
       
     </div>
   </div> -->
-</section>
+        </section>
 
 
-    <section>
-        <article class="about">
-            <h1>A propos de nous</h1>
-            <p>
-                Lancé en mars 2022 par un passionnée du web et des problématiques RH du métier du social, <img
-                    src="{{ asset('media/logo.png') }}" alt="logo"></span> est un site de recrutement en ligne
-                spécialisé dans les métiers du médico -social.
-                <img src="{{ asset('media/logo.png') }}" alt="logo"> a pour objectif de favoriser la mise en relation de
-                talents des acteurs du médico-social
-                et de recruteurs grâce à des solutions performantes et efficaces. Développé en interne,
-                indépendant et fidèle la vision de son fondateur, <img src="{{ asset('media/logo.png') }}"
-                    alt="logo">.fr se veut avant tout humain et
-                proche de ses membres.
-                Vous souhaitez recruter un profil éducateur spécialisé, assistant social, auxiliaire de vie, Directeur
-                d'établissement, etc.? Contactez-nous, <img src="{{ asset('media/logo.png') }}" alt="logo"> offre une
-                audience ciblée, de qualité et vous apportera
-                une réponse sur-mesure.
-                Vous souhaitez faire évoluer votre carrière? <img src="{{ asset('media/logo.png') }}" alt="logo"> vous
-                propose un large choix d'offres de
-                formules de recrutement, consultez et postez les offres, conseils et solutions de e-visibilité.
-                Vous souhaitez devenir partenaire <img src="{{ asset('media/logo.png') }}" alt="logo"> ? Contactez-nous,
-                notre équipe marketing vous répondra
-                dans les plus brefs délais.
-            </p>
-            <p>
-                Merci à tous les membres <img src="{{ asset('media/logo.png') }}" alt="logo"> pour votre fidélité et
-                confiance!
-            </p>
+        <section>
+            <article class="about">
+                <h2>A propos de nous</h2>
+                <p>
+                    Lancé en mars 2022 par un passionnée du web et des problématiques RH du métier du social, <img
+                        src="{{ asset('media/logo.png') }}" alt="logo"></span> est un site de recrutement en ligne
+                    spécialisé dans les métiers du médico -social.
+                    <img src="{{ asset('media/logo.png') }}" alt="logo"> a pour objectif de favoriser la mise en
+                    relation de
+                    talents des acteurs du médico-social
+                    et de recruteurs grâce à des solutions performantes et efficaces. Développé en interne,
+                    indépendant et fidèle la vision de son fondateur, <img src="{{ asset('media/logo.png') }}"
+                        alt="logo">.fr se veut avant tout humain et
+                    proche de ses membres.
+                    Vous souhaitez recruter un profil éducateur spécialisé, assistant social, auxiliaire de vie,
+                    Directeur
+                    d'établissement, etc.? Contactez-nous, <img src="{{ asset('media/logo.png') }}" alt="logo"> offre
+                    une
+                    audience ciblée, de qualité et vous apportera
+                    une réponse sur-mesure.
+                    Vous souhaitez faire évoluer votre carrière? <img src="{{ asset('media/logo.png') }}" alt="logo">
+                    vous
+                    propose un large choix d'offres de
+                    formules de recrutement, consultez et postez les offres, conseils et solutions de e-visibilité.
+                    Vous souhaitez devenir partenaire <img src="{{ asset('media/logo.png') }}" alt="logo"> ?
+                    Contactez-nous,
+                    notre équipe marketing vous répondra
+                    dans les plus brefs délais.
+                </p>
+                <p>
+                    Merci à tous les membres <img src="{{ asset('media/logo.png') }}" alt="logo"> pour votre fidélité et
+                    confiance!
+                </p>
 
-            <p>
-            <div id="fondBasPage">
-                <!-- <table class="table">
+                <p>
+                <div id="fondBasPage">
+                    <!-- <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
@@ -279,7 +307,8 @@
             {% endfor %}
         </tbody>
     </table> -->
-            </div>
+                </div>
+    </div>
 </div>
-</div>
-            {% endblock %}
+{% endblock %}
+{% endblock %}

@@ -26,21 +26,41 @@ header {
 }
 
 header a {
-    color: white;
+    color: rgb(207, 8, 8);
     text-decoration: none;
 }
 
-#navbar ul {
+nav{
+  display: flex;
+  justify-content: space-around;
+}
+
+.offcanvas-body ul{
+  display: flex;
+  flex-direction: column;
+}
+
+.offcanvas-body li{
+  padding: 10%;
+}
+
+.sidenav i{
+  color: white;
+  font-size: 1.5rem;
+}
+
+/* #navbar ul {
     display: flex;
     justify-content: space-between;
     align-items: center;
 
 }
 
+
 #navbar li {
     margin-right: 10%;
 }
-
+ */
 
 .logo img {
     width: 8rem;
@@ -65,6 +85,8 @@ header a {
 .menu .menuLiens li {
     margin: 0 60px;
 }
+
+
 
 /* main {
     background: radial-gradient(ellipse, #2f56da, white);       couleurs à garder
@@ -127,7 +149,7 @@ footer i {
 
 
 
-@media all and (max-width: 950px) {                                     /*media queries*/
+@media all and (max-width: 1280px) {                                     /*media queries*/
 
     .menu {
         margin: 0;

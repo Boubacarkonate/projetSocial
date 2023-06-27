@@ -63,4 +63,15 @@ class CvRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+        public function trouverCv($recherche): array
+        {
+            return $this->createQueryBuilder('c')
+                ->andWhere('c.job LIKE :recherche')
+                ->setParameter('recherche', '%' . $recherche . '%')
+                //    ->orderBy('c.id', 'ASC')
+                //    ->setMaxResults(10)
+                ->getQuery()
+                ->getResult()
+            ;
+        }
 }
