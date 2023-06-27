@@ -3,5 +3,52 @@
 {% block title %}Hello ContactController!{% endblock %}
 
 {% block body %}
-{{ form(form) }}
+
+<h1>Page de contact</h1>
+
+ {{ form_errors(form) }}
+    {{ form_start(form) }}
+
+    {{ form_label(form.objet) }}
+    <br>
+    {{ form_widget(form.objet) }}
+    
+    <br>
+    <br>
+{{ form_label(form.name) }}
+<br>
+{{ form_widget(form.name) }}
+
+<br>
+<br>
+
+{{ form_label(form.firstname) }}
+<br>
+{{ form_widget(form.firstname) }}
+
+<br>
+<br>
+
+{{ form_label(form.email) }}
+<br>
+{{ form_widget(form.email) }}
+
+<br>
+<br>
+
+{{ form_label(form.telephone) }}
+<br>
+{{ form_widget(form.telephone) }}
+
+<br>
+<br>
+
+
+{{ form_label(form.message) }}
+<br>
+{{ form_widget(form.message) }}
+
+{{ form_end(form) }}
+
+
 {% endblock %}

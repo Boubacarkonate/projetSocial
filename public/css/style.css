@@ -8,8 +8,9 @@
   }
 
   body{
-    display: grid;
-    grid-template-rows: auto 1fr auto;
+  position: relative;
+ 
+  min-height: 100vh;
   }
 
   .container{
@@ -44,7 +45,7 @@ nav{
   padding: 10%;
 }
 
-.sidenav i{
+.sidenavBase i{
   color: white;
   font-size: 1.5rem;
 }
@@ -137,8 +138,13 @@ background: linear-gradient(0deg, rgba(255,255,255,1) 25%, rgba(47,86,218,0.6139
 
 
 footer {
-    background-color: #5d686d;
+    background-color: #5d686d;          
     text-align: center;
+                                  /*footer coller en bas der page* par rapport au parent body qui est en relative*/
+    width: 100%;
+    bottom: 0;
+
+
    
 }
 
