@@ -1,0 +1,28 @@
+.bodyFormulaire{
+    background: radial-gradient(ellipse, #2f56da, white); 
+    /* clip-path: polygon(25% 0%, 75% 0%, 80% 50%, 75% 100%, 25% 100%, 20% 50%); */
+}
+
+.formulaire{
+  
+    width: 25%;
+    height: 55vh;
+    margin: auto;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    /* background-color: white; */
+}
+
+h1{
+    text-align: center;
+    padding-top: 5%;
+    text-shadow: 5px 5px 10px #0b0b0b;
+}
+
+.log  a{
+    color: white;
+    text-decoration: none;
+    text-shadow: 5px 5px 10px #0b0b0b;
+}
+
+
