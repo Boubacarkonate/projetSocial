@@ -66,7 +66,7 @@ class CommandesController extends AbstractController
             $commandes ->setCreatedAt(new \DateTimeImmutable());
             // $commandes -> setExpireAt(new \DateTimeImmutable('+5 minute')) ; 
             if ($key == 1) {
-              $commandes -> setExpireAt(new \DateTimeImmutable('+10 minute'))  ; 
+              $commandes -> setExpireAt(new \DateTimeImmutable('+3 minute'))  ; 
             }
             elseif ($key == 2) {
                 $commandes -> setExpireAt(new \DateTimeImmutable('+6 month'));
