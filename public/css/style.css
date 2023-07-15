@@ -5,6 +5,7 @@
     text-decoration: none;
     margin: 0;
     padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
   }
 
   body{
@@ -22,21 +23,60 @@
 
 header {
     background-color: #5d686d;
-    ;
+ 
 
 }
 
 header a {
-    color: rgb(207, 8, 8);
+    color: rgb(255, 255, 255);
     text-decoration: none;
 }
 
 nav{
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.offcanvas-body ul{
+nav ul{
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  width: 12rem;
+  margin-left: 50%;
+}
+
+.menu{
+  margin-right: 27%;
+  margin-top: 1%;
+}
+
+.menu ul li{
+  padding-right: 30% ;
+  /* border-radius: 100px;
+  background: black; */
+}
+
+.connexion{
+  display: flex;
+}
+
+.connexion .log {
+  width: 90%;
+}
+
+
+
+
+
+/* nav{
+  display: flex;
+  justify-content: space-around;
+} */
+
+/* .offcanvas-body ul{
   display: flex;
   flex-direction: column;
 }
@@ -48,7 +88,10 @@ nav{
 .sidenavBase i{
   color: white;
   font-size: 1.5rem;
-}
+} */
+
+
+/************************************************************************************************************/
 
 /* #navbar ul {
     display: flex;
@@ -61,7 +104,7 @@ nav{
 #navbar li {
     margin-right: 10%;
 }
- */
+
 
 .logo img {
     width: 8rem;
@@ -74,9 +117,9 @@ nav{
 
 .dropdown {
     display: none;
-}
+} */
 
-.menu .menuLiens ul {
+/* .menu .menuLiens ul {
     display: flex;
     justify-content: center;
     background-color: #5e7e8d;
@@ -85,7 +128,7 @@ nav{
 
 .menu .menuLiens li {
     margin: 0 60px;
-}
+} */
 
 
 
@@ -135,7 +178,7 @@ background: linear-gradient(0deg, rgba(255,255,255,1) 25%, rgba(47,86,218,0.6139
     cursor: pointer;
   } */
 
-
+  
 
 footer {
     background-color: #5d686d;          

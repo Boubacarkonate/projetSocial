@@ -82,8 +82,9 @@
     } */
 
     /*********************************************************************************
-                            arrière du bouton
+    arrière du bouton
     *********************************************************************************/
+
 
     #fondEspaceMenu{                                              /*background de la section du bouton des espaces*/
         background: radial-gradient(ellipse, #2f56da, white); 
@@ -91,14 +92,28 @@
         height: 65vh;
     }
     
+    #fondEspaceMenu h1{
+      text-align: center;
+      color: #00276b;
+      text-shadow:5px 5px 5px #ffffff; 
+      font-weight: 800;
+      padding-top: 1.5%;
+     }
+    #fondEspaceMenu p{
+      font-size: 120%;
+      text-align: center; 
+      color: white;
+      text-shadow:5px 5px 5px #275fa9; 
+     }
 
     #blocEspaceMenu{                    /*conteneur du bouton espace*/
       
         display: flex;
         flex-direction: column;
         align-items: center;
-       gap: 100px;                  /*gap permet de mettre des espace entre mes elements flexbox*/
+     /*  gap: 100px;                  gap permet de mettre des espace entre mes elements flexbox*/
     }
+    
     
 
     
@@ -106,9 +121,9 @@
                                 le bouton menu
     *************************************************************************/
         .conteneur-menu{
-          margin-top: 40px;
-          width: 300px;
-          height: 300px;
+          /* margin-top: 40px; */
+          width: 270px;
+          height: 270px;
           border-radius: 50%;
           position: relative;
           /* left: 40%; */
@@ -122,10 +137,10 @@
       
       .bouton-menu{
           display: block;
-          width: 150px;         /*100px*/
-          height: 150px;           /*100px*/
+          width: 120px;         /*100px*/
+          height: 120px;           /*100px*/
           border-radius: 50%;
-          background-color:#2f56da;
+          background-color:#00276b;
           position: absolute;
           top: 50%;
           left: 50%;
@@ -144,13 +159,15 @@
       
       .selectionEspace{
           text-align: center;
+          color: white;
+          font-weight: 600;
           width: 40px;
           height: 5px;
           border-radius: 5px;
           position: absolute;
           top: 26%;
           left: 50%;
-          transform: translate(-50%,-50%);
+          transform: translate(-60%,-300%);
       }
       
       
@@ -162,8 +179,8 @@
       
       /*représente les sphères des sous-boutons*/
       .boule{
-          width: 150px;         /*150px*/
-          height: 150px;        /*150px*/
+          width: 120px;         /*150px*/
+          height: 120px;        /*150px*/
           border-radius: 50%;
           background-color: rgb(21, 0, 71);
           position: absolute;
@@ -240,13 +257,39 @@
           top: 0;
          
       }
+
       
       
       
       /**************************************************************************
                         section des differents metiers
     *****************************************************************************/
-    h2{                                 /*tous les h2 de la page sont centrés*/
+    .container{
+        display: grid;
+        gap: 100px;              /*le grid + gap permet d'espacer mes sections*/
+    }
+   
+    .container h2{                                 /*tous les h2 de la page sont centrés*/
+        text-align: center;
+        color: #00276b;
+        font-weight: 800;
+        margin-bottom: 25px;
+    }
+
+    .container h2+p{
+        margin-bottom: 30px;
+    }
+
+    .container i{
+        color: #00276b;
+    }
+
+    .container h3{
+        color: #00276b;
+        
+    }
+
+    .paragraphe3mots{
         text-align: center;
     }
    
@@ -256,6 +299,12 @@
     .metierDuSocial{
         text-align: center;
     }
+
+    .commentaire{
+        text-align: center;
+    }
+
+
     /* #presentationMetier{
         display: flex;
        
@@ -292,23 +341,25 @@
     article a:hover{
         color: white;
     }
-
+*/
     .about{
         border:none;
     }
     .about p img {
-        width: 50px;
+        width: 5rem;
+        margin-bottom: 12px;
     }
     
    
-*/
+p{
+    /* color: #0e35b5; */
+    color: #020613;
+}
     
 
     #fondBasPage{
         background: radial-gradient(ellipse, #2f56da, white); 
         clip-path: polygon(50% 0%, 90% 20%, 100% 60%, 100% 100%, 0 100%, 0% 60%, 10% 20%);
-
-
         height: 5vh;
     }
 
@@ -316,18 +367,12 @@
 
 
 /****************************************************************************************************/
-    *{
-        /* color: #ffffff; */
-        color: #26429d;                                 /*couleur appliquée à tout le texte*/
-    }
- 
-h1{                                                       /*titre de la page*/
-    text-align: center;
-}
+   
 
-h1 + p{                                                     /*paragraphe le titre de la page*/
-    text-align: center;
-}
+
+
+
+
 
 /**********************************************************************
             partie commentaires

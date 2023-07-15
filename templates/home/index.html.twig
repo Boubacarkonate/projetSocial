@@ -8,29 +8,22 @@
 {% block body %}
 <div class="body">
     <div id="fondEspaceMenu">
-        <h1>Trouvons ensemble votre prochain talent sur E-TALENT</h1>
+        <h1>Trouvons ensemble votre prochain talent du secteur social</h1>
         <p>Recherchez tous types de profils actifs ou à l’écoute du marché.</p>
         <div id="blocEspaceMenu">
             <section class="leMenu">
                 <div class="conteneur-menu" id="conteneur-menu">
                     <div class="bouton-menu" id="bouton-menu">
-                        <div class="selectionEspace">choisis ton espace</div>
+                        <div class="selectionEspace">Cliquez sur votre espace</div>
                     </div>
-
-                    <div class="boule recruteur">
-                        <a href="{{ path('app_area_recruteur') }}">RECRUTEUR</a>
-                    </div>
-
-                    <div class="boule candidat">
-                        <a href="{{ path('app_area_candidat') }}">CANDIDAT</a>
-                    </div>
-
+                        <a href="{{ path('app_area_recruteur') }}"class="boule recruteur" >RECRUTEUR</a>
+                        <a href="{{ path('app_area_candidat') }}" class="boule candidat">CANDIDAT</a>
                 </div>
             </section>
         </div>
     </div>
     <div class="container">
-        <section>
+        <section class="paragraphe3mots">
             <h2>ETalent, en trois mots</h2>
             <p>Améliorez vos chances de recrutement, recherchez plus facilement des talents et rendez le processus de
                 recrutement plus efficace.</p>
@@ -39,7 +32,7 @@
                     <div class="card border-dark-subtle mb-3" style="max-width: 25rem;">
                         <div class="card-header"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></div>
                         <div class="card-body text-primary">
-                            <h5 class="card-title">Recherchez malin</h5>
+                            <h3 class="card-title">Recherchez malin</h3>
                             <p class="card-text">Bénéficiez d’une pertinence et d’une qualité de recherche optimale pour
                                 trouver les candidats correspondant à tous vos besoins.</p>
                         </div>
@@ -47,10 +40,10 @@
                 </div>
 
                 <div class="col">
-                    <div class="card border-primary mb-3" style="max-width: 25rem;">
+                    <div class="card border-dark-subtle mb-3" style="max-width: 25rem;">
                         <div class="card-header"><i class="fa-solid fa-hourglass-end"></i></div>
                         <div class="card-body text-primary">
-                            <h5 class="card-title">Gagnez du temps</h5>
+                            <h3 class="card-title">Gagnez du temps</h3>
                             <p class="card-text">Recherchez et identifiez efficacement des talents grâce aux champs
                                 mots-clés, aux filtres et aux nombreuses fonctionnalités disponibles.</p>
                         </div>
@@ -58,10 +51,10 @@
                 </div>
 
                 <div class="col">
-                    <div class="card border-primary mb-3" style="max-width: 25rem;">
+                    <div class="card border-dark-subtle mb-3" style="max-width: 25rem;">
                         <div class="card-header"><i class="fa-regular fa-rectangle-list"></i></div>
                         <div class="card-body text-primary">
-                            <h5 class="card-title">Soyez visibles</h5>
+                            <h3 class="card-title">Soyez visibles</h3>
                             <p class="card-text">Publiez vos offres d'emploi gratuitement afin d'être visible par les
                                 candidats membres du site et améliorer votre expérience recruteur.</p>
                         </div>
@@ -175,60 +168,13 @@
             </div>
 
         </section>
-        <section>
+        <section class="commentaire">
             <h2>Nos clients en parlent mieux que nous !</h2>
             <p>Utilisez CVaden pour rechercher les meilleurs candidats et booster vos recrutements.</p>
 
-            <div id="carouselExample" class="carousel slide">
-                <div class="carousel-inner">
-                    {% for commentaire in commentaires %}
-                    <div class="carousel-item{% if loop.first %} active{% endif %}">
-                        <div class="row">
-                            <div class="card" style="width: 18rem;">
-                                <img src="..." class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ commentaire.job }}</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up
-                                        the bulk of the card's content.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
-                    data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
-                    data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>
 
 
-
-            <!-- <div id="carouselExampleFade" class="carousel slide carousel-fade">
-    <div class="carousel-inner">
-        {% for commentaire in commentaires %}
-            <div class="carousel-item{% if loop.first %} active{% endif %}">
-                <div class="comment">
-                    <p>{{ commentaire.description }}</p>
-                </div>
-            </div>
-        {% endfor %}
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-    </button>
-</div> -->
+ 
 
             <!-- <div class="card" style="width: 18rem;">
     <div class="card-body">
@@ -280,33 +226,7 @@
 
                 <p>
                 <div id="fondBasPage">
-                    <!-- <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Description</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for commentaire in commentaires %}
-            <tr>
-                <td>{{ commentaire.createdAt ? commentaire.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ commentaire.job }}</td>
-                <td>{{ commentaire.description }}</td>
-                <td>
-                    <a href="{{ path('app_admin_commentaire_show', {'id': commentaire.id}) }}">show</a>
-                    <a href="{{ path('app_admin_commentaire_edit', {'id': commentaire.id}) }}">edit</a>
-                </td>
-            </tr>
-            {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table> -->
+         
                 </div>
     </div>
 </div>

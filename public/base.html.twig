@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> {# meta pour responsive #}
+    <title>{% block title %}e-talent, emploi du social et médico-social{% endblock %}</title>
+    <meta name="description" content=" Optimiser vos recherches d'emploi ou vos recrutements dans le secteur social et médico social ">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+    {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+    {% block stylesheets %}
+    {% endblock %}
+    {# voir les differents emplacements des links pour fonctionnement #}
+
+    <!--voir libairie line-awesone = fontawesone-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    {# lien bootstrap 5 #}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    {# lien stripe #}
+
+    {# lien css #}
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <script src="https://js.stripe.com/v3/"></script>
+
+    {% block javascripts %}
+    {% endblock %}
+</head>
+
+<body>
+
+    <div class="container-fluid px-0">
+        <header>
+
+            <nav>
+                
+                <div class="sidenavBase">
+                    <button class="btn bg-transparent" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"><i
+                            class="fa-solid fa-bars"></i></button>
+
+                    <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1"
+                        id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+                        <div class="offcanvas-header">
+                            <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel"><img
+                                    src="{{ asset('media/logo.png') }}" alt="logo"></a></h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body">
+                            <ul>
+                                <li><a href="{{ path('app_home') }}">home</a></li>
+
+
+
+
+                                {% if is_granted('ROLE_USER')==false %}
+
+                                <li><a href=" {{ path('app_login') }}">connexion</li>
+                                <!-- <li><i class="fa-solid fa-user"></i> </a></li> -->
+
+                                {% endif %}
+                                {% if is_granted('ROLE_USER') %}
+                                <li>
+                                    <a href=" {{ path('app_logout') }}">déconnexion
+                                </li>
+                                <!-- <li><i class="fa-solid fa-user"></i></a></li> -->
+                                {% endif %}
+
+
+
+                                <li><a href="{{ path('app_area_recruteur') }}">Recruteur</a></li>
+
+                                {% if is_granted('ROLE_USER_RECRUTEUR')%}
+                                <li> <a href="{{ path('app_cart_show') }}">panier<i
+                                            class="fa-solid fa-basket-shopping"></i></li></a>
+                                {% endif %}
+                                </li>
+
+                                <li><a href="{{ path('app_area_candidat') }}">Candidat</a></li>
+
+                                <li><a href="{{ path('app_contact') }}">Contact</a></li>
+
+                                <li> {% if is_granted('ROLE_ADMIN')==true %}
+                                    <a href=" {{ path('app_admin_dashboard') }}">admin</a>
+                                    {% endif %}
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- <ul>
+                        <li>
+                            <div class="logo"><a href="{{ path('app_home') }}"><img src="{{ asset('media/logo.png') }}"
+                                        alt="logo"></a>
+                            </div>
+                        </li>
+                        <li> {% if is_granted('ROLE_ADMIN')==true %}
+                            <a href=" {{ path('app_admin_dashboard') }}">admin</a>
+                        <li>
+                            {% endif %}
+                        </li>
+                        <li>
+                            <div class="login">
+
+                                <ul>
+                                    {% if is_granted('ROLE_USER')==false %}
+
+                                    <li><a href=" {{ path('app_login') }}">connexion</li>
+                                    <li><i class="fa-solid fa-user"></i> </a></li>
+
+                                    {% endif %}
+                                    {% if is_granted('ROLE_USER') %}
+                                    <li>
+                                        <a href=" {{ path('app_logout') }}">déconnexion
+                                    </li>
+                                    <li><i class="fa-solid fa-user"></i></a></li>
+                                    {% endif %}
+
+                                    {# <li> {% if is_granted('ROLE_USER')==true %}
+                                        <a href=" {{ path('app_profile_index') }}">profil</a> 
+                                        {% endif %}
+                                    </li> #}
+                                </ul>
+
+                            </div>
+                        </li>
+                        <li> {% if is_granted('ROLE_USER_RECRUTEUR')%} {# peut-être à enlever #}
+                            <div class="panier"><a href="{{ path('app_cart_show') }}">
+                                    <ul>
+                                        <li> panier</li>
+                                        <li><i class="fa-solid fa-basket-shopping"></i></li>
+                                    </ul>
+                                </a>
+                            </div>
+                            {% endif %}
+                        </li>
+                    </ul> -->
+
+                </div>
+                <div class="logo"><a href="{{ path('app_home') }}"><img src="{{ asset('media/logo.png') }}"
+                    alt="logo"></a>
+                </div>
+
+            </nav>
+
+
+        </header>
+        <main>
+            {% block container %}
+            <div class="container">
+                {% block body %} {% endblock %}
+            </div>
+            {% endblock %}
+        </main>
+        <footer>
+            <p><a href="{{ path('app_contact') }}" target="_blank">nous contacter</a> </p>
+
+
+            <div id="reseaux">
+                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-square-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+            </div>
+
+            <div class="documents">
+                <a href="{{ asset('media/cgv.pdf') }}">CGV</a>
+                <a href="{{ asset('media/mentions_legales.pdf') }}">Mentions légales</a>
+                <a href="{{ asset('media/politique_de_confidentialite.pdf') }}">Politiques de confidentialité</a>
+            </div>
+            <div class="copyright">&copy; Copyright</p>
+            </div>
+
+        </footer>
+
+
+
+
+    </div>
+
+    {# lien javascript #}
+    <script src="{{ asset('js/index.js') }}"></script>
+    {# lien javascript boostrap #}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
+
+
+
+
+*{
+    
+    box-sizing: border-box;
+    list-style-type: none;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  body{
+  position: relative;
+ 
+  min-height: 100vh;
+  }
+
+  .container{
+    display: flex;
+    flex-direction: column;
+  }
+  
+
+
+header {
+    background-color: #5d686d;
+    ;
+
+}
+
+header a {
+    color: rgb(207, 8, 8);
+    text-decoration: none;
+}
+
+nav{
+  display: flex;
+  justify-content: space-around;
+}
+
+.offcanvas-body ul{
+  display: flex;
+  flex-direction: column;
+}
+
+.offcanvas-body li{
+  padding: 10%;
+}
+
+.sidenavBase i{
+  color: white;
+  font-size: 1.5rem;
+}
+
+/* #navbar ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+
+#navbar li {
+    margin-right: 10%;
+}
+ */
+
+.logo img {
+    width: 8rem;
+
+}
+
+.barreMenu {
+    display: none;
+}
+
+.dropdown {
+    display: none;
+}
+
+.menu .menuLiens ul {
+    display: flex;
+    justify-content: center;
+    background-color: #5e7e8d;
+    margin-bottom: 0;
+}
+
+.menu .menuLiens li {
+    margin: 0 60px;
+}
+
+
+
+/* main {
+    background: radial-gradient(ellipse, #2f56da, white);       couleurs à garder
+} */
+/* main {
+  background: rgb(255,255,255);
+background: linear-gradient(0deg, rgba(255,255,255,1) 25%, rgba(47,86,218,0.6139705882352942) 100%);
+} */
+
+
+/* .conteneur {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 50px;
+  }
+  
+  .slider img {
+    max-width: 100%;
+    display: none;
+  }
+  img.active {
+    display: block;
+    animation: fade 0.8s;
+  }
+  @keyframes fade {                                                 css du slide menu
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .cont-btn {
+    width: 100%;
+    height: auto;
+    border: 1px solid #000;
+    box-shadow: 0 10px 10px rgba(0,0,0,0.3);
+    display: flex;
+    justify-content: center;
+  }
+  .btn-nav {
+    font-size: 50px;
+    margin: 0 15px;
+    cursor: pointer;
+  } */
+
+
+
+footer {
+    background-color: #5d686d;          
+    text-align: center;
+                                  /*footer coller en bas der page* par rapport au parent body qui est en relative*/
+    width: 100%;
+    bottom: 0;
+
+
+   
+}
+
+footer i {
+    padding: 2rem;
+    color: white;
+}
+
+
+
+@media all and (max-width: 1280px) {                                     /*media queries*/
+
+    .menu {
+        margin: 0;
+    }
+
+    .dropdown {
+        display: block;
+        text-align: right;
+    }
+
+    .menu {
+        display: none;
+    }
+
+
+    .barre {
+        display: none;
+    }
+
+    .login li:first-child  {                                /*efface le premier li "compte*/
+        display: none;
+    }
+
+    .login a i {
+        color: rgb(255, 255, 255);
+        display: flex;
+    }
+
+    .panier li:first-child  {
+        display: none;
+    }
+
+
+}
+
+
+
+/******************************************************************/
+
+ <nav>
+                <div id="navbar">
+
+                    <ul>
+                        <li>
+                            <div class="logo"><a href="{{ path('app_home') }}"><img src="{{ asset('media/logo.png') }}"
+                                        alt="logo"></a>
+                            </div>
+                        </li>
+                        <li> {% if is_granted('ROLE_ADMIN')==true %}
+                            <a href=" {{ path('app_admin_dashboard') }}">admin</a>
+                        <li>
+                            {% endif %}
+                        </li>
+                        <li>
+                            <div class="barre">
+                                <form action="{{ path('app_search') }}" method="GET">
+                                    <input type="search" name="search" id="search" placeholder="mot..."
+                                        size=""><button><i class="fa-sharp fa-solid fa-magnifying-glass"></i></button>
+                                </form>
+                                {% if search %}
+
+                                <ul>
+                                    {% for search in search %}
+                                    <li>{{ resultats }}</li>
+                                    {% endfor %}
+                                </ul>
+                                {% else %}
+                                <p>Aucun résultat trouvé.</p>
+                                {% endif %}
+
+                            </div>
+                            <div class="barreMenu">
+                                <form method="get" action="">
+                                    <input type="search" name="search" id="search" placeholder="mot..."
+                                        size=""><button><i class="fa-sharp fa-solid fa-magnifying-glass"></i></button>
+                                </form>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="login">
+
+                                <ul>
+                                    {% if is_granted('ROLE_USER')==false %}
+
+                                    <li><a href=" {{ path('app_login') }}">connexion</li>
+                                    <li><i class="fa-solid fa-user"></i> </a></li>
+
+                                    {% endif %}
+                                    {% if is_granted('ROLE_USER') %}
+                                    <li>
+                                        <a href=" {{ path('app_logout') }}">déconnexion
+                                    </li>
+                                    <li><i class="fa-solid fa-user"></i></a></li>
+                                    {% endif %}
+
+                                    <li> {% if is_granted('ROLE_USER')==true %}
+                                        <a href=" {{ path('app_profile_index') }}">profil</a> {# a bien placer en css#}
+                                        {% endif %}
+                                    </li>
+                                </ul>
+
+                            </div>
+                        </li>
+                        <li> {% if is_granted('ROLE_USER_RECRUTEUR')%} {# peut-être à enlever #}
+                            <div class="panier"><a href="{{ path('app_cart_show') }}">
+                                    <ul>
+                                        <li> panier</li>
+                                        <li><i class="fa-solid fa-basket-shopping"></i></li>
+                                    </ul>
+                                </a>
+                            </div>
+                            {% endif %}
+                        </li>
+                    </ul>
+
+                </div>
+                <div class="dropdown">
+                    <a class="btn bg-transparent dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        <i class="fa-solid fa-bars"></i>
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-item">
+                            <form method="get" action="">
+                                <input type="search" name="search" id="search" placeholder="mot..." size=""><button><i
+                                        class="fa-sharp fa-solid fa-magnifying-glass"></i></button>
+                            </form>
+                        </li>
+                        {# <li><a class="dropdown-item" href="{{ path('app_formule_recruteur_index') }}" target="_blank"
+                                #}>recruteur</a></li>
+                        <li><a class="dropdown-item" href="#" target="_blank">candidat</a></li>
+                        <li><a class="dropdown-item" href="#" target="_blank">offre d'emploi</a></li>
+                    </ul>
+                </div>
+
+               <!-- <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
+  <i class="fa-solid fa-bars"></i>
+</button>
+
+<div class="offcanvas offcanvas-start" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="staticBackdropLabel">Menu</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div>
+      <ul class="dropdown-menu">
+                        <li class="dropdown-item">
+                            <form method="get" action="">
+                                <input type="search" name="search" id="search" placeholder="mot..." size=""><button><i
+                                        class="fa-sharp fa-solid fa-magnifying-glass"></i></button>
+                            </form>
+                        </li>
+                        {# <li><a class="dropdown-item" href="{{ path('app_formule_recruteur_index') }}" target="_blank"
+                                #}>recruteur</a></li>
+                        <li><a class="dropdown-item" href="#" target="_blank">candidat</a></li>
+                        <li><a class="dropdown-item" href="#" target="_blank">offre d'emploi</a></li>
+                    </ul>
+    </div>
+  </div>
+</div> -->
+
+                <div class="menu">
+                    <div class="menuLiens">
+                        <ul>
+                            <li>
+
+                                <a href="{{ path('app_area_recruteur') }}">recruteur</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('app_annonce_emploi_index') }}">offre
+                                    d'emploi</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('app_area_candidat') }}">candidat</a>
+                            </li>
+                        </ul>
+                    </div>
+
+            </nav>
