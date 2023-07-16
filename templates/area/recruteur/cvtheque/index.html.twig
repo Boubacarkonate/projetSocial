@@ -5,13 +5,31 @@
 {% block body %}
 <h1>Cvtheque</h1>
 
+ <div class="barre text-center">
+    <form action="{{ path('app_search') }}" method="GET">
+        <input type="search" name="search" id="search" placeholder="mot..."
+            size=""><button><i class="fa-sharp fa-solid fa-magnifying-glass"></i></button>
+    </form>
+    {% if search %}
+
+    <ul>
+        {% for search in search %}
+        <li>{{ resultats }}</li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>Aucun résultat trouvé.</p>
+    {% endif %}
+
+</div>
+
 <div class="row row-cols-1 row-cols-md-3 g-4">
     {% for cv in resultats %}
     <div class="col">
         <div class="card" style="width: 18rem;">
             <img src="{{ asset('media/cvModel.png') }}" class="card-img-top" alt="photo cv">
             <div class="card-body">
-                <h5 class="card-title"> {{ cv.job }}</h5>  {#l'id sera enlevé #}
+                <h5 class="card-title"> {{ cv.job }}</h5>  
                 <p class="card-text">Catégorie : {{ cv.categorie }}</p>
                 <a href="{{ asset('uploads/' ~ cv.cvCandidat ) }}" class="btn btn-primary">Voir Cv</a>
             </div>
@@ -19,7 +37,7 @@
     </div>
     {% endfor %}
 </div>
-{{ dump() }}
+
 {% endblock %}
 
 

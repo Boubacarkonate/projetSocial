@@ -63,7 +63,7 @@ class CvthequeController extends AbstractController
             } else {
                 $resultats = $cvRepository->findAll();
             }
-            return $this->render('search/index.html.twig', [
+            return $this->render('area/recruteur/cvtheque/index.html.twig', [
                 'resultats' => $resultats,
             ]);
         }
