@@ -33,7 +33,7 @@ body{
 .profile h2{
     color: #26429d;
     padding-top: 15px;
-}
+}s
 .profileRecruteur h2{
     color: #000000;
     padding-top: 15px;
@@ -50,3 +50,16 @@ a{
 .sidenav{
     padding-top: 15%;
 }
+
+/****************************************************************************
+            Média queries
+*********************************************************************************/
+
+@media all and (max-width: 1000px) {
+    .profile{
+         width: 90%;
+     }
+     .profileRecruteur{
+         width: 90%;
+     }
+}    

@@ -13,7 +13,7 @@ class HomeController extends AbstractController
     public function index(CommentaireRepository $commentaireRepository): Response
     {
         return $this->render('home/index.html.twig', [
-            // 'commentaires' => $commentaireRepository->findAll(),
+            'commentaires' => $commentaireRepository->findAll(),
         ]);
     }
 }

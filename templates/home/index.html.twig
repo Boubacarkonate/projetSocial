@@ -16,8 +16,8 @@
                     <div class="bouton-menu" id="bouton-menu">
                         <div class="selectionEspace">Cliquez sur votre espace</div>
                     </div>
-                        <a href="{{ path('app_area_recruteur') }}"class="boule recruteur" >RECRUTEUR</a>
-                        <a href="{{ path('app_area_candidat') }}" class="boule candidat">CANDIDAT</a>
+                    <a href="{{ path('app_area_recruteur') }}" class="boule recruteur">RECRUTEUR</a>
+                    <a href="{{ path('app_area_candidat') }}" class="boule candidat">CANDIDAT</a>
                 </div>
             </section>
         </div>
@@ -62,11 +62,11 @@
                 </div>
             </div>
         </section>
-        <section class="presentation">
+        <section class="presentation bg-body-tertiary border border-light-subtle  rounded-5">
             <h2>Les différents métiers du médico-social</h2>
 
             <div class="container text-center">
-                <div class=" row bg-body-tertiary">
+                <div class=" row ">
                     <div class="col-sm-7">
 
                         <p class="resume">
@@ -168,27 +168,42 @@
             </div>
 
         </section>
-        <section class="commentaire">
+        <section class="commentaire bg-body-tertiary border border-light-subtle  rounded-5">
             <h2>Nos clients en parlent mieux que nous !</h2>
             <p>Utilisez CVaden pour rechercher les meilleurs candidats et booster vos recrutements.</p>
 
 
 
- 
+            <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner bg-body-secondary rounded-bottom">
+                    {% for commentaire in commentaires %}
+                    <div class="carousel-item{% if loop.first %} active{% endif %}">
 
-            <!-- <div class="card" style="width: 18rem;">
-    <div class="card-body">
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <ul class="card-identity">
-        <li></li>
-        <li></li>
-        <li></li>
-      </ul>
-      
-    </div>
-  </div> -->
+
+
+                        <div class="card-body mx-auto">
+                            <p class="card-text"> &laquo; <em>{{ commentaire.description }}</em> &raquo; </p>
+
+                            <p class="card-title"> <strong>{{ commentaire.user }}</strong></p>
+                            <p class="card-title"> <strong>{{ commentaire.job }}</strong></p>
+                            <p class="card-title"> <strong> chez {{ commentaire.user.company }}</strong></p>
+                        </div>
+
+                    </div>
+                    {% endfor %}
+                </div>
+                <button class="carousel-control-prev " type="button" data-bs-target="#carouselExampleAutoplaying"
+                    data-bs-slide="prev">
+                    <span class="btn carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next " type="button" data-bs-target="#carouselExampleAutoplaying"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
         </section>
-
 
         <section>
             <article class="about">
@@ -220,13 +235,13 @@
                     dans les plus brefs délais.
                 </p>
                 <p>
-                    Merci à tous les membres <img src="{{ asset('media/logo.png') }}" alt="logo"> pour votre fidélité et
-                    confiance!
+                   <strong> Merci à tous les membres <img src="{{ asset('media/logo.png') }}" alt="logo"> pour votre fidélité et
+                    confiance! </strong>
                 </p>
 
                 <p>
                 <div id="fondBasPage">
-         
+
                 </div>
     </div>
 </div>
