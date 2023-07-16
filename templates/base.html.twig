@@ -59,19 +59,21 @@
                         <li>
                             <a href="{{ path('app_area_candidat') }}">candidat</a>
                         </li>
-                        
+
                         {% if is_granted('ROLE_USER')==false %}
                         <a href=" {{ path('app_login') }}" class="connexion">
-                        <li class="log">connexion</li>
-                           <li><i class="fa-solid fa-user"></i> 
-                        </li></a>
+                            <li class="log">connexion</li>
+                            <li><i class="fa-solid fa-user"></i>
+                            </li>
+                        </a>
                         {% endif %}
 
                         {% if is_granted('ROLE_USER') %}
                         <a href=" {{ path('app_logout') }}" class="connexion">
                             <li class="log">déconnexion</li>
-                               <li><i class="fa-solid fa-user"></i> 
-                            </li></a>
+                            <li><i class="fa-solid fa-user"></i>
+                            </li>
+                        </a>
                         {% endif %}
 
                     </ul>
@@ -81,6 +83,68 @@
 
             </nav>
 
+            <nav class="responsive">
+                <div class="sidenavBase ">
+                    <button class="btn bg-transparent " type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"><i
+                            class="fa-solid fa-bars"></i></button>
+
+                    <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1"
+                        id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+                        <div class="offcanvas-header">
+                            <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel"><img
+                                    src="{{ asset('media/logo.png') }}" alt="logo"></a></h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body">
+                            <ul>
+                                <li><a href="{{ path('app_home') }}">home</a></li>
+
+
+
+
+                                {% if is_granted('ROLE_USER')==false %}
+
+                                <li><a href=" {{ path('app_login') }}">connexion</li>
+                                <!-- <li><i class="fa-solid fa-user"></i> </a></li> -->
+
+                                {% endif %}
+                                {% if is_granted('ROLE_USER') %}
+                                <li>
+                                    <a href=" {{ path('app_logout') }}">déconnexion
+                                </li>
+                                <!-- <li><i class="fa-solid fa-user"></i></a></li> -->
+                                {% endif %}
+
+
+
+                                <li><a href="{{ path('app_area_recruteur') }}">Recruteur</a></li>
+
+                                {% if is_granted('ROLE_USER_RECRUTEUR')%}
+                                <li> <a href="{{ path('app_cart_show') }}">panier<i
+                                            class="fa-solid fa-basket-shopping"></i></li></a>
+                                {% endif %}
+                                </li>
+
+                                <li><a href="{{ path('app_area_candidat') }}">Candidat</a></li>
+
+                                <li><a href="{{ path('app_contact') }}">Contact</a></li>
+
+                                <li> {% if is_granted('ROLE_ADMIN')==true %}
+                                    <a href=" {{ path('app_admin_dashboard') }}">admin</a>
+                                    {% endif %}
+                                </li>
+
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="logoResponsive"><a href="{{ path('app_home') }}"><img src="{{ asset('media/logo.png') }}"
+                            alt="logo"></a>
+                </div>
+            </nav>
 
         </header>
         <main>

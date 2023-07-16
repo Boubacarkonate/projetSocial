@@ -71,12 +71,12 @@ nav ul{
 
 
 
-/* nav{
+nav .responsive{
   display: flex;
   justify-content: space-around;
-} */
+} 
 
-/* .offcanvas-body ul{
+ .offcanvas-body ul{
   display: flex;
   flex-direction: column;
 }
@@ -84,101 +84,29 @@ nav ul{
 .offcanvas-body li{
   padding: 10%;
 }
+.offcanvas-body li a{
+  color:red;
+}
 
 .sidenavBase i{
   color: white;
   font-size: 1.5rem;
-} */
+}
 
+.responsive{
+  display: flex;
+  align-items: center;
+  justify-content:space-around;
+  flex-direction: row-reverse;
+  display: none;
+}
+ .logoResponsive img{
+  width: 8rem;
+ }
 
 /************************************************************************************************************/
 
-/* #navbar ul {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 
-}
-
-
-#navbar li {
-    margin-right: 10%;
-}
-
-
-.logo img {
-    width: 8rem;
-
-}
-
-.barreMenu {
-    display: none;
-}
-
-.dropdown {
-    display: none;
-} */
-
-/* .menu .menuLiens ul {
-    display: flex;
-    justify-content: center;
-    background-color: #5e7e8d;
-    margin-bottom: 0;
-}
-
-.menu .menuLiens li {
-    margin: 0 60px;
-} */
-
-
-
-/* main {
-    background: radial-gradient(ellipse, #2f56da, white);       couleurs à garder
-} */
-/* main {
-  background: rgb(255,255,255);
-background: linear-gradient(0deg, rgba(255,255,255,1) 25%, rgba(47,86,218,0.6139705882352942) 100%);
-} */
-
-
-/* .conteneur {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 50px;
-  }
-  
-  .slider img {
-    max-width: 100%;
-    display: none;
-  }
-  img.active {
-    display: block;
-    animation: fade 0.8s;
-  }
-  @keyframes fade {                                                 css du slide menu
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-  
-  .cont-btn {
-    width: 100%;
-    height: auto;
-    border: 1px solid #000;
-    box-shadow: 0 10px 10px rgba(0,0,0,0.3);
-    display: flex;
-    justify-content: center;
-  }
-  .btn-nav {
-    font-size: 50px;
-    margin: 0 15px;
-    cursor: pointer;
-  } */
-
-  
 
 footer {
     background-color: #5d686d;          
@@ -200,6 +128,9 @@ footer i {
 
 @media all and (max-width: 1280px) {                                     /*media queries*/
 
+  nav {
+    display: none;
+  }
     .menu {
         margin: 0;
     }
@@ -231,5 +162,8 @@ footer i {
         display: none;
     }
 
+    .responsive{
+      display: flex;
+    }
 
 }
