@@ -1,5 +1,4 @@
 *{
-    
     box-sizing: border-box;
     list-style-type: none;
     text-decoration: none;
@@ -55,17 +54,15 @@ nav ul{
 
 .menu ul li{
   padding-right: 30% ;
-  /* border-radius: 100px;
-  background: black; */
 }
 
-.connexion{
+/* .connexion{
   display: flex;
-}
+} */
 
-.connexion .log {
+/* .connexion .log {
   width: 90%;
-}
+} */
 
 
 
@@ -79,13 +76,14 @@ nav .responsive{
  .offcanvas-body ul{
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
 }
 
 .offcanvas-body li{
   padding: 10%;
 }
 .offcanvas-body li a{
-  color:red;
+  color:rgb(255, 255, 255);
 }
 
 .sidenavBase i{
@@ -114,14 +112,17 @@ footer {
                                   /*footer coller en bas der page* par rapport au parent body qui est en relative*/
     width: 100%;
     bottom: 0;
-
-
    
 }
 
 footer i {
     padding: 2rem;
     color: white;
+}
+
+footer a{
+  color: white;
+  text-decoration: none;
 }
 
 
@@ -135,19 +136,12 @@ footer i {
         margin: 0;
     }
 
-    .dropdown {
-        display: block;
-        text-align: right;
-    }
+
 
     .menu {
         display: none;
     }
 
-
-    .barre {
-        display: none;
-    }
 
     .login li:first-child  {                                /*efface le premier li "compte*/
         display: none;
@@ -164,6 +158,7 @@ footer i {
 
     .responsive{
       display: flex;
+      align-items: center;
     }
 
 }

@@ -34,7 +34,7 @@
 
 <body>
 
-    <div class="container-fluid px-0">
+    <div class="container-fluid px-0 py-0">
         <header>
 
             <nav>
@@ -60,27 +60,16 @@
                             <a href="{{ path('app_area_candidat') }}">candidat</a>
                         </li>
 
-                        {% if is_granted('ROLE_USER')==false %}
-                        <a href=" {{ path('app_login') }}" class="connexion">
-                            <li class="log">connexion</li>
-                            <li><i class="fa-solid fa-user"></i>
-                            </li>
-                        </a>
-                        {% endif %}
-
-                        {% if is_granted('ROLE_USER') %}
-                        <a href=" {{ path('app_logout') }}" class="connexion">
-                            <li class="log">déconnexion</li>
-                            <li><i class="fa-solid fa-user"></i>
-                            </li>
-                        </a>
-                        {% endif %}
+                        <li>
+                            {% if is_granted('ROLE_USER')==false %}
+                            <a href=" {{ path('app_login') }}">connexion</a>
+                            {% else  %}
+                            <a href=" {{ path('app_logout') }}">déconnexion</a>
+                            {% endif %}
+                        </li>
 
                     </ul>
                 </div>
-
-
-
             </nav>
 
             <nav class="responsive">
@@ -89,7 +78,7 @@
                         data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"><i
                             class="fa-solid fa-bars"></i></button>
 
-                    <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1"
+                    <div class="offcanvas offcanvas-start bg-secondary" data-bs-scroll="true" tabindex="-1"
                         id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
                         <div class="offcanvas-header">
                             <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel"><img
@@ -99,40 +88,38 @@
                         </div>
                         <div class="offcanvas-body">
                             <ul>
-                                <li><a href="{{ path('app_home') }}">home</a></li>
+                                <li><a href="{{ path('app_home') }}">HOME</a></li>
 
 
 
 
                                 {% if is_granted('ROLE_USER')==false %}
 
-                                <li><a href=" {{ path('app_login') }}">connexion</li>
-                                <!-- <li><i class="fa-solid fa-user"></i> </a></li> -->
+                                <li><a href=" {{ path('app_login') }}">Connexion</li>
+                               
 
                                 {% endif %}
                                 {% if is_granted('ROLE_USER') %}
                                 <li>
-                                    <a href=" {{ path('app_logout') }}">déconnexion
+                                    <a href=" {{ path('app_logout') }}">Déconnexion
                                 </li>
-                                <!-- <li><i class="fa-solid fa-user"></i></a></li> -->
+                                
                                 {% endif %}
 
 
+                                <li><a href="{{ path('app_area_candidat') }}">Candidat</a></li>
 
                                 <li><a href="{{ path('app_area_recruteur') }}">Recruteur</a></li>
 
                                 {% if is_granted('ROLE_USER_RECRUTEUR')%}
-                                <li> <a href="{{ path('app_cart_show') }}">panier<i
-                                            class="fa-solid fa-basket-shopping"></i></li></a>
+                                <li> <a href="{{ path('app_cart_show') }}">Panier</li></a>
                                 {% endif %}
                                 </li>
-
-                                <li><a href="{{ path('app_area_candidat') }}">Candidat</a></li>
 
                                 <li><a href="{{ path('app_contact') }}">Contact</a></li>
 
                                 <li> {% if is_granted('ROLE_ADMIN')==true %}
-                                    <a href=" {{ path('app_admin_dashboard') }}">admin</a>
+                                    <a href=" {{ path('app_admin_dashboard') }}">Admin</a>
                                     {% endif %}
                                 </li>
 
@@ -148,11 +135,11 @@
 
         </header>
         <main>
-            {% block container %}
-            <div class="container">
+           
+           
                 {% block body %} {% endblock %}
-            </div>
-            {% endblock %}
+           
+           
         </main>
         <footer>
             <p><a href="{{ path('app_contact') }}" target="_blank">nous contacter</a> </p>
@@ -170,7 +157,7 @@
                 <a href="{{ asset('media/mentions_legales.pdf') }}">Mentions légales</a>
                 <a href="{{ asset('media/politique_de_confidentialite.pdf') }}">Politiques de confidentialité</a>
             </div>
-            <div class="copyright">&copy; Copyright</p>
+            <div class="copyright text-white">&copy; Copyright</p>
             </div>
 
         </footer>
