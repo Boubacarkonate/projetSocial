@@ -34,10 +34,10 @@
 
 <body>
 
-    <div class="container-fluid px-0 py-0">
+   <div class="container-fluid px-0"> 
         <header>
 
-            <nav>
+            <nav class="navHeader">
                 <div class="logo"><a href="{{ path('app_home') }}"><img src="{{ asset('media/logo.png') }}"
                             alt="logo"></a>
                 </div>
@@ -122,8 +122,6 @@
                                     <a href=" {{ path('app_admin_dashboard') }}">Admin</a>
                                     {% endif %}
                                 </li>
-
-
                             </ul>
                         </div>
                     </div>

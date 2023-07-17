@@ -31,20 +31,20 @@ header a {
     text-decoration: none;
 }
 
-nav{
+ .navHeader{
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-nav ul{
+ .navHeader ul{
   display: flex;
   align-items: center;
 }
 
 .logo img {
-  width: 12rem;
-  margin-left: 50%;
+  width: 10rem;
+   margin-left: 50%;
 }
 
 .menu{
@@ -54,7 +54,7 @@ nav ul{
 
 .menu ul li{
   padding-right: 30% ;
-}
+} 
 
 /* .connexion{
   display: flex;
@@ -68,10 +68,7 @@ nav ul{
 
 
 
-nav .responsive{
-  display: flex;
-  justify-content: space-around;
-} 
+
 
  .offcanvas-body ul{
   display: flex;
@@ -129,7 +126,7 @@ footer a{
 
 @media all and (max-width: 1280px) {                                     /*media queries*/
 
-  nav {
+  .navHeader{
     display: none;
   }
     .menu {

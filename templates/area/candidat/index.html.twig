@@ -2,7 +2,7 @@
 
 {% block title %}Espace candidat{% endblock %}
 {% block stylesheets %}
-<link rel="stylesheet" href="{{ asset('css/profile.css') }}">
+<link rel="stylesheet" href="{{ asset('css/profiler.css') }}">
 {% endblock %}
 
 {% block body %}
@@ -43,7 +43,7 @@
       <p>Métier : {{ cv.job}}</p>
       <p>Catégorie : {{ cv.categorie}}</p>
       <p>Curriculum vitae : <a href="{{ asset('uploads/' ~ cv.cvCandidat ) }}">voir CV</a></p>
-      <a href=" {{ path('app_cv_index') }} " class="btn btn-primary">Gérer mon cv</a>
+      <p><a href=" {{ path('app_cv_index') }} " class="btn btn-primary">Gérer mon cv</a></p>
 
       {% else %}
       <!--3 sinon de la condition if ultérieure : sinon fait le lien enregistrer apparaît pour introduire ses données dans l'entité Cv-->
@@ -56,16 +56,8 @@
       <!--fermeture de la condition if-->
 
 
-      <a href="{{ path('app_profile_edit', {'id': app.user.id}) }} " class="btn btn-primary">edit Profile</a>
-
+      <p><a href="{{ path('app_profile_edit', {'id': app.user.id}) }} " class="btn btn-primary">edit Profile</a></p>
+      <p><a href=" {{ path('app_area_candidat_annonce_index') }}" class="btn btn-primary ">Voir les offres d'emploi</a></p>
 
    </div>
-
-<!-- <a href=" {{ path('app_forfait_index') }}">Voir mon compte</a>
-  <br>
-  <a href=" {{ path('app_cv_new') }}">Enregistrer son cv</a>
-  <br>
-  
-  <br>
-  <a href=" {{ path('app_cv_index') }}">Voir les offres d'emploi</a> -->
 {% endblock %}

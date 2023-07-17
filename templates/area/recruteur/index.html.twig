@@ -1,8 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AreaController!{% endblock %}
+{% block title %} AreaRecruteur{% endblock %}
 {% block stylesheets %}
-<link rel="stylesheet" href="{{ asset('css/profile.css') }}">
+<link rel="stylesheet" href="{{ asset('css/profiler.css') }}">
 {% endblock %}
 {% block body %}
 <div class="bodyRecruteur">
@@ -18,7 +18,7 @@
 <div id="flex">
     <div class="sidenav">
         
-        <a href=" {{ path('app_cvtheque') }} "class="btn btn-primary ">La CVthèque E-TALENT</a>
+        <p><a href=" {{ path('app_cvtheque') }} "class="btn btn-primary ">La CVthèque E-TALENT</a></p>
         <p><a href=" {{ path('app_annonce_emploi_index') }}" class="btn btn-primary ">Vos annonces d'emploi</a></p>
     </div>
     <div class="profileRecruteur">
