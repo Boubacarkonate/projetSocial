@@ -31,4 +31,24 @@ h1{
    
 }
 
+@media all and (max-width: 550px) { 
+
+    .formulaire{
+        height: 60vh;                   /*hauteur du formulaire*/
+    }
+
+   #inputEmail{
+    width: 150%;                        /*pour élargir les inputs*/
+   }
+   #inputPassword{
+    width: 150%;
+   }
+   .log{
+    padding-bottom: 5%;
+   }
+   h1{
+    padding-top: 0;
+   }
+}
+
 

@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Validator\Constraints\Regex;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -21,6 +22,7 @@ class RegistrationFormType extends AbstractType
         $builder
            
             ->add('roles', ChoiceType::class, [
+                'required'=>true,
                  'label' => "Choisissez votre espace :", 
                 'attr' => [
                     'class'=> 'form-control-lg'],
@@ -28,7 +30,7 @@ class RegistrationFormType extends AbstractType
                 'choices' => [
                     'Recruteur' => "ROLE_USER_RECRUTEUR",
                     'Candidat' => "ROLE_USER_CANDIDAT",
-                    'Admin' => "ROLE_ADMIN"
+                    // 'Admin' => "ROLE_ADMIN"
                 ],
                 'expanded' => false,
                 'multiple' => true,
@@ -36,13 +38,15 @@ class RegistrationFormType extends AbstractType
 
             ]) 
             ->add('name', TextType::class, [
-            'attr' => [
-                'placeholder' => 'Nom de famille',
+                'required'=>true,
+                'attr' => [
+                'placeholder' => 'Nom de famille*',
                 'class' => 'form-control']
             ]) 
             ->add('firstname', TextType::class,[
+                'required'=>true,
                 'attr' => [
-                    'placeholder' => 'Prénom',
+                    'placeholder' => 'Prénom*',
                     'class' => 'form-control']
                 ] )
             ->add('company', TextType::class, [
@@ -59,25 +63,28 @@ class RegistrationFormType extends AbstractType
                 ])
            
             ->add('email', EmailType::class, [
+                'required'=>true,
                 'attr' => [
-                    'placeholder' => 'Email',
+                    'placeholder' => 'Email*',
                     'class' => 'form-control']
             ])
             ->add('plainPassword', PasswordType::class, [
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'mapped' => false,
+                'required'=>true,
                 'attr' => [
-                    'placeholder' => 'Mot de passe de minimun 14 caractères',       //recommandation cnil
+                    'placeholder' => 'Mot de passe de minimun 14 caractères*',       //recommandation cnil
                     'class' => 'form-control',
                     'autocomplete' => 'new-password'],
-                // 'constraints' => [
-                //     new Regex('/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{14,}$/',
-                //     "Doit contenir au minimum 14 caractères, dont 1 majuscule, 1 minuscule, 1 chiffre & 1 caractère spécial (@$!%*?&)")  //je ne vois pas le message
-                // ],
+                'constraints' => [
+                    new Regex('/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{14,}$/',
+                    "Doit contenir au minimum 14 caractères, dont 1 majuscule, 1 minuscule, 1 chiffre & 1 caractère spécial (@$!%*?&)")  //je ne vois pas le message
+                ],
             ])
             ->add('agreeTerms', CheckboxType::class, [
-                'label' => 'J\'accepte que mes informations soient stockées dans la base de données de Mon Blog pour la gestion des commentaires. J\'ai bien noté qu\'en aucun cas ces données ne seront cédées à des tiers.',
+                'label' => 'J\'accepte les termes du site web.',
+                'required'=>true,
                 'mapped' => false,
                 'constraints' => [
                     new IsTrue([
