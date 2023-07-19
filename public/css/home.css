@@ -203,6 +203,7 @@
 
     .paragraphe3mots{
         text-align: center;
+  
     }
    
     .resume{
@@ -273,7 +274,7 @@ p{
             Média queries
 *********************************************************************************/
 
-@media all and (max-width: 1000px) {
+@media all and (max-width: 769px) {
         #fondBasPage{
             display: none;
         } 
@@ -286,6 +287,20 @@ p{
         #blocEspaceMenu{
             display: none;
         }
+
+        .paragraphe3mots {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+           
+        }
+
+        .breakpointCard{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
     }    
 
 
